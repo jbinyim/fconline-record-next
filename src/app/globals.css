@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Nexon Gothic";
+  src: url("/fonts/NEXONLv1GothicBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexon Gothic";
+  src: url("/fonts/NEXONLv1GothicLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexon Gothic";
+  src: url("/fonts/NEXONLv1GothicRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black50: #242424;
+  --gray50: #383838;
+  --skyBlue50: #6b7280;
+  --white50: #e5e7eb;
+  --red50: #fff2f4;
+  --red100: #ffa69e;
+  --red200: #6d4141;
+  --green50: #ecffec;
+  --green100: #04d65f;
+  --green200: #10b981;
+  --green300: #36814a;
+
+  --nexon: "Nexon Gothic";
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-black50: var(--black50);
+  --color-gray50: var(--gray50);
+  --color-skyBlue50: var(--skyBlue50);
+  --color-white50: var(--white50);
+  --color-red50: var(--red50);
+  --color-red100: var(--red100);
+  --color-red200: var(--red200);
+  --color-green50: var(--green50);
+  --color-green100: var(--green100);
+  --color-green200: var(--green200);
+  --color-green300: var(--green300);
+
+  --font-nexon: var(--nexon);
+
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 744px;
+  --breakpoint-pc: 1200px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-nexon {
+  font-family: var(--font-nexon);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--black50);
+  color: #fff;
+  font-family: var(--nexon), sans-serif;
 }
