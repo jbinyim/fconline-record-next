@@ -37,6 +37,7 @@
   --green200: #10b981;
   --green300: #36814a;
 
+
   --nexon: "Nexon Gothic";
 }
 
@@ -52,6 +53,7 @@
   --color-green100: var(--green100);
   --color-green200: var(--green200);
   --color-green300: var(--green300);
+
 
   --font-nexon: var(--nexon);
 
@@ -69,3 +71,32 @@ body {
   color: #fff;
   font-family: var(--nexon), sans-serif;
 }
+
+a{display:inline-block;}
+button{display:inline-block; cursor: pointer;}
+
+@media screen and (min-width:375px) and (max-width:743px){
+  .searchArea{
+    background:url('/backgroundImgs/fcBackground.png')no-repeat center / cover;
+    width:100%;
+    padding:100px 0;
+  }
+}
+
+@media screen and (min-width:744px) and (max-width:1199px){
+  .searchArea{
+    background:url('/backgroundImgs/fcBackground.png')no-repeat center / cover;
+    width:100%;
+    padding:75px 0;
+  }
+}
+
+
+@media screen and (min-width:1200px){
+  .searchArea{
+    background:url('/backgroundImgs/fcBackground.png')no-repeat center / cover;
+    width:100%;
+    padding:50px 0;
+  }
+}
+
