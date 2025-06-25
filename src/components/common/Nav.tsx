@@ -17,7 +17,7 @@ const Nav = () => {
         />
         <h1 className="text-center pc:text-left">
           <Link href="/" className="font-bold text-3xl">
-            FCGG
+            <img src="/logo/logo.png" alt="" className="inline-block"/>
           </Link>
         </h1>
         <ul className="hidden pc:flex items-center">
@@ -29,7 +29,7 @@ const Nav = () => {
           </li>
           <li className="px-[15px] text-skyBlue50 font-normal text-lg duration-300 hover:text-white50 hover:translate-y-[-2px]">
             <Link href="/calculate">
-              <img src="" alt="" />
+              <img src="/icons/chart.png" alt="" className="inline-block mr-[10px]" />
               수수료 계산기
             </Link>
           </li>

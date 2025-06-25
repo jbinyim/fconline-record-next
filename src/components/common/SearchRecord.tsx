@@ -9,7 +9,7 @@ const SearchRecord = () => {
             유저 검색
           </h2>
           <form className="relative w-[100%] text-center">
-            <img src="" alt="" className="absolute left-0 top-0" />
+            <img src="/icons/search-icon.png" alt="" className="absolute left-[20px] top-[50%] translate-y-[-50%]" />
             <input
               type="search"
               name=""
