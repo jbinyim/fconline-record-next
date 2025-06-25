@@ -1,9 +1,9 @@
-import Official from "@/components/game/Official";
+import MatchGame from "@/components/game/MatchGame";
 import React from "react";
 
 const OfficialGame = () => {
   return <div>
-    <Official />
+    <MatchGame />
   </div>;
 };
 

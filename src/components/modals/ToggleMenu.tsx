@@ -11,7 +11,7 @@ const ToggleMenu: React.FC<ToggleMenuProps> = ({ isOpen, onClose }) => {
     <div className={`opacity-[90%] text-nowrap fixed top-0 left-0 h-[2000px] bg-white transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "w-full" : "w-0"}`}>
       <section className="p-4">
         <div className="mb-[70px] flex items-center gap-[20px] cursor-pointer">
-          <img src="/icons/arrow.png" alt="" className="inline-block" onClick={onClose} />
+          <img src="/icons/arrow-l.png" alt="" className="inline-block" onClick={onClose} />
           <h2 className="inline-block text-black font-bold text-lg">더보기</h2>
         </div>
         <div className="text-sm font-normal">

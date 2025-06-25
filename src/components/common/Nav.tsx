@@ -25,7 +25,7 @@ const Nav = () => {
         <ul className="hidden pc:flex items-center">
           <li className="px-[15px] text-skyBlue50 font-normal text-lg duration-300 hover:text-white50 hover:translate-y-[-2px]">
             <Link href="/board">
-              <img src="" alt="" />
+              {/* <img src="" alt="" /> */}
               공지사항
             </Link>
           </li>
@@ -37,7 +37,7 @@ const Nav = () => {
           </li>
           <li className="px-[15px] text-skyBlue50 font-normal text-lg duration-300 hover:text-white50 hover:translate-y-[-2px]">
             <Link href="/record/officialGame">
-              <img src="" alt="" />
+              {/* <img src="" alt="" /> */}
               게시판
             </Link>
           </li>
