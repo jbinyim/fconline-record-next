@@ -6,14 +6,16 @@ import ToggleMenu from "../modals/ToggleMenu";
 
 const Nav = () => {
   const [isToggleModal, setIsToggleModal] = useState<boolean>(false);
+  const handleToggleMenu = () => {setIsToggleModal((prev) => !prev)}
+  const handleCloseMenu = () => {setIsToggleModal(false)}
   return (
     <div>
       <nav className="w-full pc:flex items-center my-0 mx-auto relative py-[15px] pc:w-[85%] pc:justify-between">
         <img
           src="/icons/toggleMenuBtn.png"
           alt="메뉴토클버튼"
-          className="absolute left-[20px] top-[20px] pc:hidden z-10"
-          onClick={() => setIsToggleModal((prev) => !prev)}
+          className="absolute left-[20px] top-[25px] pc:hidden"
+          onClick={handleToggleMenu}
         />
         <h1 className="text-center pc:text-left">
           <Link href="/" className="font-bold text-3xl">
@@ -61,7 +63,7 @@ const Nav = () => {
           </ul>
         </div>
       </nav>
-      {isToggleModal && <ToggleMenu />}
+      <ToggleMenu isOpen={isToggleModal} onClose={handleCloseMenu} />
     </div>
   );
 };
