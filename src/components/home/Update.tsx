@@ -4,9 +4,13 @@ const Update = () => {
   return (
     <div>
       <section className="w-full">
-        <div className="w-[80%] mx-auto rounded-[20px] bg-white/10 p-8 border border-[rgba(255,255,255,0.2)]">
+        <div className="w-[80%] mx-auto rounded-[20px] bg-white/10 p-8 border border-[rgba(255,255,255,0.2)] pc:w-[1200px]">
           <h2 className="w-full font-bold mb-10 text-lg tablet:text-xl pc:text-2xl">
-            <img src="/icons/check-circle.png" alt="" className="inline-block mr-[15px]" />
+            <img
+              src="/icons/check-circle.png"
+              alt=""
+              className="inline-block mr-[15px]"
+            />
             업데이트 내역
           </h2>
           <ul className="w-full pc:w-[90%] mx-auto grid grid-cols-1 justify-center items-center gap-5">
