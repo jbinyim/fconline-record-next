@@ -64,8 +64,50 @@
   font-family: var(--font-nexon);
 }
 
+a {
+  display: inline-block;
+}
+button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 375px) and (max-width: 743px) {
+  .searchArea {
+    background: url("/backgroundImgs/mobileBg.png") no-repeat center / cover;
+    width: 100%;
+    padding: 100px 0;
+  }
+}
+
+@media screen and (min-width: 744px) and (max-width: 1199px) {
+  .searchArea {
+    background: url("/backgroundImgs/mobileBg.png") no-repeat center / cover;
+    width: 100%;
+    padding: 75px 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .searchArea {
+    background: url("/backgroundImgs/pcBg.png") no-repeat center / cover;
+    width: 100%;
+    padding: 50px 0;
+  }
+}
+
 body {
   background: var(--black50);
   color: #fff;
   font-family: var(--nexon), sans-serif;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

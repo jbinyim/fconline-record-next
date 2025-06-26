@@ -1,5 +1,11 @@
-import Image from "next/image";
+import RecentRecord from "@/components/home/RecentRecord";
+import Update from "@/components/home/Update";
 
 export default function Home() {
-  return <div>메인</div>;
+  return (
+    <div>
+      <RecentRecord />
+      <Update />
+    </div>
+  );
 }

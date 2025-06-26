@@ -1,7 +1,10 @@
+import MatchGame from "@/components/game/MatchGame";
 import React from "react";
 
 const OfficialGame = () => {
-  return <div>OfficialGame</div>;
+  return <div>
+    <MatchGame />
+  </div>;
 };
 
 export default OfficialGame;

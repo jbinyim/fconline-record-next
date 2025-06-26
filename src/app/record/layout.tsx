@@ -1,9 +1,10 @@
+import SearchLayout from "@/components/layout/SearchLayout";
 import React, { ReactNode } from "react";
 
 const RecordLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
-      RecordLayout
+      <SearchLayout />
       {children}
     </div>
   );

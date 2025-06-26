@@ -1,7 +1,10 @@
+import FeeResult from "@/components/fee/FeeResult";
 import React from "react";
 
 const Calculate = () => {
-  return <div>Calculate</div>;
+  return <div>
+    <FeeResult />
+  </div>;
 };
 
 export default Calculate;
