@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import TanstackQueryProvider from "@/providers/TanstackQueryProvider";
 
 export const metadata: Metadata = {
   title: "피파전적검색",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        {children}
+        <TanstackQueryProvider>
+          <Header />
+          {children}
+        </TanstackQueryProvider>
       </body>
     </html>
   );
