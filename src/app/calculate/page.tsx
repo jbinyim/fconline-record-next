@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 
 type CurrencyUnit = "억" | "조" | "경";
 
+
 const Calculate = () => {
   const [isPremiumChecked, setIsPremiumChecked] = useState(false);
   const [isTopClassChecked, setIsTopClassChecked] = useState(true);
   const [saleAmount, setSaleAmount] = useState(0);
   const [currency, setCurrency] = useState("억");
+  const [value, setValue] = useState('');
 
   const [calculationResults, setCalculationResults] = useState({
     basicFee: 0,
@@ -69,11 +71,17 @@ const Calculate = () => {
 
   const handleSaleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number.parseFloat(e.target.value);
+    const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+
     if (!isNaN(value) && value > 0) {
       setSaleAmount(value);
+      setValue(onlyNums);
     } else if (e.target.value === "") {
       setSaleAmount(0);
+      setValue(onlyNums);
     }
+
+    
   };
 
   const handlePremiumToggle = () => {
@@ -83,6 +91,7 @@ const Calculate = () => {
   const handleTopClassToggle = () => {
     setIsTopClassChecked(!isTopClassChecked);
   };
+
   return (
     <div>
       <main className="w-[90%] tablet:w-[70%] pc:w-[50%] mx-auto">
@@ -99,7 +108,7 @@ const Calculate = () => {
             <div className="flex justify-between mb-[30px] font-bold">
               <div className="flex">
                 <input
-                  type="number"
+                  type="text"
                   name=""
                   id=""
                   placeholder="판매 금액"

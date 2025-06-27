@@ -4,7 +4,7 @@ import React from "react";
 const SearchLayout = () => {
   return (
     <div>
-      <section className="mx-auto w-[90%] tablet:w-[80%] pc:w-[70%]">
+      <section className="mx-auto w-[90%] tablet:w-[80%] pc:w-[1200px]">
         <div className="flex items-center p-5 bg-white/10 border border-[rgba(255,255,255,0.1)] rounded-[10px] mb-[35px]">
           <div className="text-center w-[30%] text-2xl font-bold">
             <span className="block mb-5 text-green200">호날두</span>

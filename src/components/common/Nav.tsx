@@ -14,7 +14,7 @@ const Nav = () => {
         <img
           src="/icons/toggleMenuBtn.png"
           alt="메뉴토클버튼"
-          className="absolute left-[20px] top-[25px] pc:hidden"
+          className="cursor-pointer absolute left-[20px] top-[25px] pc:hidden"
           onClick={handleToggleMenu}
         />
         <h1 className="text-center pc:text-left">
