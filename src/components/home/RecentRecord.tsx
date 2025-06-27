@@ -4,6 +4,7 @@ import useAccount from "@/hooks/useAccount";
 import fo4Mappings from "@/utils/fo4Mappings";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 type DivisionInfo = {
   matchType: number;
@@ -74,7 +75,7 @@ const RecentRecord = () => {
             />
             최근 조회한 유저
           </h2>
-          {isLoading && <div>loading</div>}
+          {isLoading && <LoadingSpinner />}
           <ul className="mobile:w-[90%] mx-auto grid grid-cols-2 gap-5 pc:gap-10 pc:flex pc:justify-between pc:items-center pc:w-full">
             {userInfos.map((result) => (
               <li
