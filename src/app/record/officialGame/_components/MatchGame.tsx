@@ -28,13 +28,12 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
           }`}
           onClick={toggleExpanded}
         >
-          <div className="absolute top-[10px] tablet:relative tablet:top-0 text-sm tablet:text-base pc:text-lg">
-            {matchData.time}
+          <div className="w-[50px] tablet:w-[80px] text-[10px] tablet:text-sm pc:text-base">
+            1분 전
           </div>
-          <div className="text-center">
+          <div className="text-center tablet:m-0">
             <span className="text-base tablet:text-lg pc:text-xl font-bold">
-              {matchData.homeTeam} {matchData.homeScore} : {matchData.awayScore}{" "}
-              {matchData.awayTeam}
+              {matchData.homeTeam} {matchData.homeScore} : {matchData.awayScore} {matchData.awayTeam}
             </span>
           </div>
           <div className="duration-300">
@@ -131,8 +130,8 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
           }`}
           onClick={toggleExpanded}
         >
-          <div className="absolute top-[10px] tablet:relative tablet:top-0 text-sm tablet:text-base pc:text-lg">
-            {matchData.time}
+          <div className="w-[50px] tablet:w-[80px] text-[10px] tablet:text-base pc:text-lg">
+            12시간 전
           </div>
           <div className="text-center">
             <span className="text-base tablet:text-lg pc:text-xl font-bold">

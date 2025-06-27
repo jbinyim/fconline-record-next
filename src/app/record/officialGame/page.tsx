@@ -30,7 +30,7 @@ const matchData = [
 const OfficialGame = () => {
   return (
     <div>
-      <section className="pc:w-[70%] tablet:w-[80%] w-[90%] mx-auto grid grid-cols-1 gap-[20px]">
+      <section className="pc:w-[1200px] tablet:w-[80%] w-[90%] mx-auto grid grid-cols-1 gap-[20px]">
         {matchData.map((match, index) => (
           <MatchGame key={index} matchData={match} />
         ))}
