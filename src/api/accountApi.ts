@@ -39,4 +39,22 @@ const getUserBasic = async (ouid: string) => {
   }
 };
 
-export default { getOuid, getUserBasic };
+const getUserMaxdivision = async (ouid: string) => {
+  try {
+    const res = await fetch(`${BASE_URL}/user/maxdivision?ouid=${ouid}`, {
+      headers: {
+        "x-nxopen-api-key": API_KEY!,
+      },
+    });
+
+    if (!res.ok) throw new Error("등급 조회 실패");
+
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};
+
+export default { getOuid, getUserBasic, getUserMaxdivision };

@@ -13,4 +13,10 @@ const useUserBasic = () => {
   });
 };
 
-export default { useOuid, useUserBasic };
+const useUsermaxdivision = () => {
+  return useMutation({
+    mutationFn: accountApi.getUserMaxdivision,
+  });
+};
+
+export default { useOuid, useUserBasic, useUsermaxdivision };

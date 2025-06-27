@@ -1,40 +1,66 @@
 "use client";
 
 import useAccount from "@/hooks/useAccount";
+import fo4Mappings from "@/utils/fo4Mappings";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
+type DivisionInfo = {
+  matchType: number;
+  division: number;
+  achievementDate: string;
+};
+
+type UserInfo = {
+  ouid: string;
+  nickname: string;
+  division: DivisionInfo[];
+};
+
 const RecentRecord = () => {
-  const [recentOuid, setRecentOuid] = useState<string[]>([]);
-  const [results, setResults] = useState<any[]>([]);
+  const [recentOuids, setRecentOuids] = useState<string[]>([]);
+  const [userInfos, setUserInfos] = useState<UserInfo[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const storge = localStorage.getItem("userouid");
 
     if (storge) {
       const ouid = JSON.parse(storge);
-      setRecentOuid(ouid);
+      setRecentOuids(ouid);
     }
   }, []);
 
-  const { mutateAsync, isPending } = useAccount.useUserBasic();
+  const { mutateAsync: ouidMutateAsync } = useAccount.useUserBasic();
+  const { mutateAsync: divisionMutateAsync } = useAccount.useUsermaxdivision();
 
   useEffect(() => {
     async function fetschAll() {
-      const resArr = [];
-      for (const ouid of recentOuid) {
+      setIsLoading(true);
+      const resultsArr = [];
+      for (const ouid of recentOuids) {
         try {
-          const res = await mutateAsync(ouid);
-          resArr.push(res);
-          setResults([...resArr]);
+          const ouidRes = await ouidMutateAsync(ouid);
+          const divisionRes = await divisionMutateAsync(ouid);
+
+          resultsArr.push({
+            ouid,
+            nickname: ouidRes.nickname,
+            division: divisionRes,
+          });
         } catch (e) {
           console.log(e);
         }
       }
+      setUserInfos(resultsArr);
+      setIsLoading(false);
     }
-    if (recentOuid.length > 0) {
+
+    if (recentOuids.length > 0) {
       fetschAll();
     }
-  }, [recentOuid]);
+  }, [recentOuids]);
 
   return (
     <div>
@@ -48,11 +74,14 @@ const RecentRecord = () => {
             />
             최근 조회한 유저
           </h2>
-          {isPending && <div>loading</div>}
+          {isLoading && <div>loading</div>}
           <ul className="mobile:w-[90%] mx-auto grid grid-cols-2 gap-5 pc:gap-10 pc:flex pc:justify-between pc:items-center pc:w-full">
-            {results.map((result) => (
+            {userInfos.map((result) => (
               <li
                 key={result.ouid}
+                onClick={() =>
+                  router.push(`/record/officialGame?ouid=${result.ouid}`)
+                }
                 className="hover:text-green-200 cursor-pointer p-[10px] rounded-[10px] bg-white/10 border border-[rgba(255,255,255,0.1)] text-center w-full flex justify-center duration-300 hover:translate-y-[-5px] hover:bg-white/20 hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
               >
                 <div className="">
@@ -61,7 +90,9 @@ const RecentRecord = () => {
                       {result.nickname}
                     </h3>
                     <img
-                      src="https://ssl.nexon.com/s2/game/fo4/obt/rank/large/update_2009/ico_rank0.png"
+                      src={fo4Mappings.getDivisionImg(
+                        result.division[0].division,
+                      )}
                       alt=""
                       className=""
                     />
