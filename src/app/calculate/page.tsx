@@ -4,18 +4,37 @@ import { useState, useEffect } from "react";
 
 type CurrencyUnit = "억" | "조" | "경";
 
+interface InputGroup {
+  id: number
+  saleAmount: number
+  currency: string
+  selectedPeople: string
+  selectedCoupon: number
+  maxDiscountAmount: number
+  maxDiscountCurrency: string
+}
+
 
 const Calculate = () => {
   const [isPremiumChecked, setIsPremiumChecked] = useState(false);
   const [isTopClassChecked, setIsTopClassChecked] = useState(true);
-  const [saleAmount, setSaleAmount] = useState(0);
-  const [currency, setCurrency] = useState("억");
-  const [value, setValue] = useState('');
+  const [inputGroups, setInputGroups] = useState<InputGroup[]>([
+    {
+      id: 1,
+      saleAmount: 0,
+      currency: "억",
+      selectedPeople: "",
+      selectedCoupon: 0,
+      maxDiscountAmount: 0,
+      maxDiscountCurrency: "억",
+    },
+  ])
 
   const [calculationResults, setCalculationResults] = useState({
     basicFee: 0,
     totalDiscountRate: 0,
     discountAmount: 0,
+    couponDiscount: 0,
     individualDiscount: 0,
     finalFee: 0,
     finalAmount: 0,
@@ -38,51 +57,89 @@ const Calculate = () => {
   };
 
   const calculateFees = () => {
-    const actualSaleAmount = convertToActualValue(
-      saleAmount,
-      currency as CurrencyUnit,
-    );
+    let totalBasicFee = 0
+    let totalCouponDiscount = 0
+    let totalSaleAmount = 0
 
-    const basicFeeRate = 0.4;
-    const basicFee = actualSaleAmount * basicFeeRate;
+    // 모든 입력 그룹의 수수료를 합산
+    inputGroups.forEach((group) => {
+      const actualSaleAmount = convertToActualValue(group.saleAmount, group.currency as CurrencyUnit)
+      const basicFeeRate = 0.4
+      let basicFee = actualSaleAmount * basicFeeRate
 
-    let totalDiscountRate = 0;
-    if (isPremiumChecked) totalDiscountRate += 0.3;
-    if (isTopClassChecked) totalDiscountRate += 0.2;
-    totalDiscountRate = Math.min(totalDiscountRate, 0.5);
+      const peopleCount = group.selectedPeople ? Number.parseInt(group.selectedPeople.replace("명", "")) : 1
+      const multipliedSaleAmount = actualSaleAmount * peopleCount
+      basicFee = basicFee * peopleCount
 
-    const discountAmount = basicFee * totalDiscountRate;
-    const finalFee = basicFee - discountAmount;
-    const finalAmount = actualSaleAmount - finalFee;
+      // 쿠폰 할인 계산
+      const calculatedCouponDiscount = basicFee * (group.selectedCoupon / 100)
+      const maxDiscountLimit = convertToActualValue(group.maxDiscountAmount, group.maxDiscountCurrency as CurrencyUnit)
+      const couponDiscount =
+        group.maxDiscountAmount > 0 ? Math.min(calculatedCouponDiscount, maxDiscountLimit) : calculatedCouponDiscount
+
+      totalBasicFee += basicFee
+      totalCouponDiscount += couponDiscount
+      totalSaleAmount += multipliedSaleAmount
+    })
+
+    let totalDiscountRate = 0
+    if (isPremiumChecked) totalDiscountRate += 0.3
+    if (isTopClassChecked) totalDiscountRate += 0.2
+    totalDiscountRate = Math.min(totalDiscountRate, 0.5)
+
+    const discountAmount = totalBasicFee * totalDiscountRate
+    const finalFee = totalBasicFee - discountAmount - totalCouponDiscount
+    const finalAmount = totalSaleAmount - finalFee
 
     setCalculationResults({
-      basicFee,
+      basicFee: totalBasicFee,
       totalDiscountRate,
       discountAmount,
+      couponDiscount: totalCouponDiscount,
       individualDiscount: 0,
       finalFee,
       finalAmount,
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    calculateFees();
-  }, [saleAmount, isPremiumChecked, isTopClassChecked, currency]);
+    calculateFees()
+  }, [inputGroups, isPremiumChecked, isTopClassChecked])
 
-  const handleSaleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number.parseFloat(e.target.value);
-    const onlyNums = e.target.value.replace(/[^0-9]/g, '');
+  const addInputGroup = () => {
+    const newId = Math.max(...inputGroups.map((g) => g.id)) + 1
+    setInputGroups([
+      ...inputGroups,
+      {
+        id: newId,
+        saleAmount: 0,
+        currency: "억",
+        selectedPeople: "",
+        selectedCoupon: 0,
+        maxDiscountAmount: 0,
+        maxDiscountCurrency: "억",
+      },
+    ])
+  }
 
-    if (!isNaN(value) && value > 0) {
-      setSaleAmount(value);
-      setValue(onlyNums);
-    } else if (e.target.value === "") {
-      setSaleAmount(0);
-      setValue(onlyNums);
+  const updateInputGroup = (id: number, field: keyof InputGroup, value: any) => {
+    setInputGroups(
+      inputGroups.map((group) =>
+        group.id === id
+          ? {
+              ...group,
+              [field]: value,
+            }
+          : group,
+      ),
+    )
+  }
+
+  const removeInputGroup = (id: number) => {
+    if (inputGroups.length > 1) {
+      setInputGroups(inputGroups.filter((group) => group.id !== id))
     }
-
-    
-  };
+  }
 
   const handlePremiumToggle = () => {
     setIsPremiumChecked(!isPremiumChecked);
@@ -100,7 +157,16 @@ const Calculate = () => {
             수수료 계산기
           </h2>
         </div>
-        <section className="mb-[10px]">
+        {inputGroups.map((group) => (
+        <section key={group.id} className="mb-[10px] relative">
+          {inputGroups.length > 1 && (
+              <button
+                onClick={() => removeInputGroup(group.id)}
+                className="absolute top-[30%] right-[0px] bg-red-500 text-white font-bold px-[5px] text-sm hover:bg-red-200"
+              >
+                -
+              </button>
+            )}
           <label htmlFor="" className="block py-[10px] px-[5px]">
             판매 예정 금액
           </label>
@@ -112,18 +178,28 @@ const Calculate = () => {
                   name=""
                   id=""
                   placeholder="판매 금액"
-                  value={saleAmount}
-                  onChange={handleSaleAmountChange}
+                  value={group.saleAmount}
+                  onChange={(e) => {
+                    const value = e.target.value
+                    if (value === "") {
+                      updateInputGroup(group.id, "saleAmount", 0)
+                    } else {
+                      const numValue = Number.parseFloat(value)
+                      if (!isNaN(numValue) && numValue > 0) {
+                        updateInputGroup(group.id, "saleAmount", numValue)
+                      }
+                    }
+                  }}
                   className="p-[5px] text-xs tablet:text-sm pc:text-base w-[80px] tablet:w-[120px] border-[1px] border-r-0 outline-0"
                 />
                 <select
                   name=""
                   id=""
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value)}
+                  value={group.currency}
+                  onChange={(e) => updateInputGroup(group.id, "currency", e.target.value)}
                   className="p-[5px] bg-black50 outline-0 border-[1px] border-l-0"
                 >
-                  <option value="억" selected>
+                  <option value="억">
                     억
                   </option>
                   <option value="조">조</option>
@@ -134,9 +210,11 @@ const Calculate = () => {
                 <select
                   name=""
                   id=""
+                  value={group.selectedPeople}
+                  onChange={(e) => updateInputGroup(group.id, "selectedPeople", e.target.value)}
                   className="p-[5px] w-[100%] bg-black50 outline-0"
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     인원
                   </option>
                   <option value="1명">1명</option>
@@ -151,9 +229,17 @@ const Calculate = () => {
                 <select
                   name=""
                   id=""
+                  value={group.selectedCoupon === 0 ? "" : `${group.selectedCoupon}%`}
                   className="p-[5px] w-[100%] bg-black50 outline-0"
+                  onChange={(e) =>
+                    updateInputGroup(
+                      group.id,
+                      "selectedCoupon",
+                      e.target.value === "" ? 0 : Number(e.target.value.replace("%", "")),
+                    )
+                  }
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     쿠폰
                   </option>
                   <option value="10%">10%</option>
@@ -173,25 +259,43 @@ const Calculate = () => {
                   name=""
                   id=""
                   placeholder="최대 할인BP"
+                  value={group.maxDiscountAmount === 0 ? "" : group.maxDiscountAmount}
+                  onChange={(e) => {
+                    const value = e.target.value
+                    if (value === "") {
+                      updateInputGroup(group.id, "maxDiscountAmount", 0)
+                    } else {
+                      const numValue = Number.parseFloat(value)
+                      if (!isNaN(numValue) && numValue >= 0) {
+                        updateInputGroup(group.id, "maxDiscountAmount", numValue)
+                      }
+                    }
+                  }}
                   className="p-[5px] text-xs tablet:text-sm pc:text-base w-[80px] tablet:w-[120px] border-[1px] border-r-0 outline-0"
                 />
                 <select
                   name=""
                   id=""
+                  value={group.maxDiscountCurrency}
+                  onChange={(e) => updateInputGroup(group.id, "maxDiscountCurrency", e.target.value)}
                   className="p-[5px] bg-black50 outline-0 border-[1px] border-l-0"
                 >
-                  <option value="억" selected>
-                    억
-                  </option>
+                  <option value="억">억</option>
                   <option value="조">조</option>
                 </select>
               </div>
             </div>
-            <button className="inline-block w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px] inline-block">
-              입력창 추가
-            </button>
           </form>
         </section>
+))}
+            <button
+              type="button"
+              onClick={addInputGroup}
+              className="inline-block w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px]"
+            >
+              입력창 추가
+            </button>
+  
 
         <section className="mb-[20px]">
           <h2 className="py-[10px] px-[5px] border-b-[1px]">
@@ -256,7 +360,29 @@ const Calculate = () => {
           <div className="flex justify-between mb-5">
             <span className="text-sm tablet:text-base">기본 수수료(40%)</span>
             <span className="text-sm tablet:text-base">
-              -{formatNumber(calculationResults.basicFee)}원 BP
+              - {formatNumber(calculationResults.basicFee)}원 BP
+            </span>
+          </div>
+          <div className="flex justify-between mb-5">
+            <span className="text-sm tablet:text-base">
+              인원별 수수료 계산
+              <span className="text-green100 text-[13px]"> 총{" "}
+                {inputGroups.reduce(
+                  (sum, group) =>
+                    sum + (group.selectedPeople ? Number.parseInt(group.selectedPeople.replace("명", "")) : 1),
+                  0,
+                )}
+                명 (인원 수 × 기본 수수료)
+              </span>
+            </span>
+            <span className="text-sm tablet:text-base">
+              기본 수수료 ×{" "}
+              {inputGroups.reduce(
+                (sum, group) =>
+                  sum + (group.selectedPeople ? Number.parseInt(group.selectedPeople.replace("명", "")) : 1),
+                0,
+              )}
+              명
             </span>
           </div>
           <div className="flex justify-between mb-5">
@@ -272,18 +398,35 @@ const Calculate = () => {
             </span>
           </div>
           <div className="flex justify-between pb-5 border-b-[1px]">
-            <span className="text-sm tablet:text-base">개별 할인 금액</span>
+            <span className="text-sm tablet:text-base">쿠폰 할인 금액 <span className="text-green100 text-[13px]">전체 쿠폰 할인</span></span>
             <span className="text-sm tablet:text-base">
-              {calculationResults.individualDiscount}원 BP
+            {formatNumber(calculationResults.couponDiscount)}원 BP
             </span>
           </div>
           <div className="flex justify-between py-5">
-            <span className="text-sm tablet:text-base">최종 수수료</span>
+            <span className="text-sm tablet:text-base ml-[10px]">최종 수수료</span>
             <span className="text-sm tablet:text-base">
-              -{formatNumber(calculationResults.finalFee)}원 BP
+              - {formatNumber(calculationResults.finalFee)}원 BP
             </span>
           </div>
         </section>
+
+        <div className="flex justify-between mb-5">
+            <span className="text-sm tablet:text-base ml-[10px]">
+              총 판매 금액
+              <span className="text-green100 text-[13px]"> (인원 수 반영)</span>
+            </span>
+            <span className="text-sm tablet:text-base">
+              {formatNumber(
+                inputGroups.reduce((sum, group) => {
+                  const actualSaleAmount = convertToActualValue(group.saleAmount, group.currency as CurrencyUnit)
+                  const peopleCount = group.selectedPeople ? Number.parseInt(group.selectedPeople.replace("명", "")) : 1
+                  return sum + actualSaleAmount * peopleCount
+                }, 0),
+              )}
+              원 BP
+            </span>
+          </div>
 
         <section className="mx-auto text-center bg-gray50 py-10 flex items-center justify-center flex-col gap-5 mb-30">
           <div className="font-bold text-xl">최종 받는 금액</div>
