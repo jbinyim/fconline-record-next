@@ -5,6 +5,8 @@ import fo4Mappings from "@/utils/fo4Mappings";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { useQueries } from "@tanstack/react-query";
+import accountApi from "@/api/accountApi";
 
 type DivisionInfo = {
   matchType: number;
@@ -20,8 +22,7 @@ type UserInfo = {
 
 const RecentRecord = () => {
   const [recentOuids, setRecentOuids] = useState<string[]>([]);
-  const [userInfos, setUserInfos] = useState<UserInfo[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -33,35 +34,34 @@ const RecentRecord = () => {
     }
   }, []);
 
-  const { mutateAsync: ouidMutateAsync } = useAccount.useUserBasic();
-  const { mutateAsync: divisionMutateAsync } = useAccount.useUsermaxdivision();
+  const userBasicQueries = useQueries({
+    queries: recentOuids.map((ouid) => ({
+      queryKey: ["userBasic", ouid],
+      queryFn: () => accountApi.getUserBasic(ouid),
+    })),
+  });
 
-  useEffect(() => {
-    async function fetschAll() {
-      setIsLoading(true);
-      const resultsArr = [];
-      for (const ouid of recentOuids) {
-        try {
-          const ouidRes = await ouidMutateAsync(ouid);
-          const divisionRes = await divisionMutateAsync(ouid);
+  const userDivisionQueries = useQueries({
+    queries: recentOuids.map((ouid) => ({
+      queryKey: ["userMaxDivision", ouid],
+      queryFn: () => accountApi.getUserMaxdivision(ouid),
+      enabled: !!ouid,
+    })),
+  });
 
-          resultsArr.push({
-            ouid,
-            nickname: ouidRes.nickname,
-            division: divisionRes,
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      setUserInfos(resultsArr);
-      setIsLoading(false);
-    }
+  const isLoading =
+    userBasicQueries.some((q) => q.isLoading) ||
+    userDivisionQueries.some((q) => q.isLoading);
 
-    if (recentOuids.length > 0) {
-      fetschAll();
-    }
-  }, [recentOuids]);
+  const userInfos: UserInfo[] = recentOuids.map((ouid, idx) => {
+    const basicData = userBasicQueries[idx]?.data;
+    const divisionData = userDivisionQueries[idx]?.data;
+    return {
+      ouid,
+      nickname: basicData?.nickname || "Unknown",
+      division: divisionData || [],
+    };
+  });
 
   return (
     <div>
@@ -92,7 +92,7 @@ const RecentRecord = () => {
                     </h3>
                     <img
                       src={fo4Mappings.getDivisionImg(
-                        result.division[0].division,
+                        result.division[0]?.division,
                       )}
                       alt=""
                       className=""

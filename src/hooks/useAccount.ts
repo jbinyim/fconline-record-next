@@ -7,15 +7,19 @@ const useOuid = () => {
   });
 };
 
-const useUserBasic = () => {
-  return useMutation({
-    mutationFn: accountApi.getUserBasic,
+const useUserBasic = (ouid: string) => {
+  return useQuery({
+    queryKey: ["userBasic", ouid],
+    queryFn: () => accountApi.getUserBasic(ouid),
+    enabled: !!ouid,
   });
 };
 
-const useUsermaxdivision = () => {
-  return useMutation({
-    mutationFn: accountApi.getUserMaxdivision,
+const useUsermaxdivision = (ouid: string) => {
+  return useQuery({
+    queryKey: ["userMaxDivision", ouid],
+    queryFn: () => accountApi.getUserMaxdivision(ouid),
+    enabled: !!ouid,
   });
 };
 
