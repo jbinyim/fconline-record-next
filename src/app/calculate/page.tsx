@@ -187,7 +187,7 @@ const Calculate = () => {
                 </select>
               </div>
             </div>
-            <button className="w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px]">
+            <button className="inline-block w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px] inline-block">
               입력창 추가
             </button>
           </form>
@@ -208,7 +208,7 @@ const Calculate = () => {
               </span>
               <button
                 type="button"
-                className={`w-[15px] h-[15px] border-[2px] rounded-[3px] absolute right-0 transition-all duration-300 ${
+                className={`inline-block w-[15px] h-[15px] border-[2px] rounded-[3px] absolute right-0 transition-all duration-300 ${
                   isPremiumChecked ? "border-green100" : "border-skyBlue50"
                 }`}
                 onClick={handlePremiumToggle}
@@ -232,7 +232,7 @@ const Calculate = () => {
               </span>
               <button
                 type="button"
-                className={`w-[15px] h-[15px] border-[2px] rounded-[3px] absolute right-0 transition-all duration-300 ${
+                className={`inline-block w-[15px] h-[15px] border-[2px] rounded-[3px] absolute right-0 transition-all duration-300 ${
                   isTopClassChecked ? "border-green100" : "border-skyBlue50"
                 }`}
                 onClick={handleTopClassToggle}
@@ -247,7 +247,7 @@ const Calculate = () => {
               </button>
             </div>
           </div>
-          <button className="w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px]">
+          <button className="inline-block w-full mx-auto text-center bg-green100 font-bold text-xl py-[10px]">
             계산하기
           </button>
         </section>
