@@ -1,5 +1,5 @@
 import accountApi from "@/api/accountApi";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
 
 const useOuid = () => {
   return useMutation({
@@ -23,4 +23,19 @@ const useUsermaxdivision = (ouid: string) => {
   });
 };
 
-export default { useOuid, useUserBasic, useUsermaxdivision };
+const useUserMatch = (ouid: string) => {
+  return useInfiniteQuery({
+    queryKey: ["userMatch", ouid],
+    queryFn: ({ pageParam = 0 }) =>
+      accountApi.getUserMatch(ouid, pageParam, 10),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.length > 0) {
+        return allPages.length * 10;
+      }
+      return undefined;
+    },
+  });
+};
+
+export default { useOuid, useUserBasic, useUsermaxdivision, useUserMatch };

@@ -1,24 +1,29 @@
 "use client";
 
+import useMatch from "@/hooks/useMatch";
 import { useState } from "react";
-
-interface MatchData {
-  time: string;
-  homeTeam: string;
-  awayTeam: string;
-  homeScore: number;
-  awayScore: number;
-}
+import MatchLineup from "./MatchLineup";
+import MatchDetailRecord from "./MatchDetailRecord";
 
 interface MatchItemProps {
-  matchData: MatchData;
+  matchData: string | undefined;
 }
 
 const MatchGame = ({ matchData }: MatchItemProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isMatchDetailToggle, setIsMatchDetailToggle] = useState<boolean>(true);
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const { data, isPending } = useMatch.useMatchDetail(matchData);
+
+  console.log(data);
+
+  if (isPending) {
+    return <div>loaing</div>;
+  }
+
   return (
     <div>
       <div className="">
@@ -33,7 +38,8 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
           </div>
           <div className="text-center tablet:m-0">
             <span className="text-base tablet:text-lg pc:text-xl font-bold">
-              {matchData.homeTeam} {matchData.homeScore} : {matchData.awayScore} {matchData.awayTeam}
+              {data.matchInfo[0].nickname} {data.matchInfo[0].shoot.goalTotal} :{" "}
+              {data.matchInfo[1].shoot.goalTotal} {data.matchInfo[1].nickname}
             </span>
           </div>
           <div className="duration-300">
@@ -54,24 +60,42 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
         >
           <div className="pb-3">
             <div className="flex justify-center gap-[20px] mb-5 bg-white">
-              <button className="text-gray-600 border-b-2 border-transparent hover:border-gray-600 duration-300">
+              <button
+                onClick={() => setIsMatchDetailToggle(true)}
+                className={`text-gray-600 border-b-2 border-transparent hover:border-gray-600 duration-300 ${
+                  isMatchDetailToggle && "bg-gray-600 text-white rounded-md p-2"
+                }`}
+              >
                 경기 기록
               </button>
-              <button className="bg-gray-600 text-white rounded-md p-2 hover:border-gray-600 duration-300">
+              <button
+                onClick={() => setIsMatchDetailToggle(false)}
+                className={`text-gray-600 border-b-2 border-transparent hover:border-gray-600 duration-300 ${
+                  !isMatchDetailToggle &&
+                  "bg-gray-600 text-white rounded-md p-2"
+                }`}
+              >
                 라인업
               </button>
             </div>
-
             <div className="flex items-center justify-center tablet:justify-between mb-6">
               <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
                 <span className="block text-black font-bold mb-[5px]">
-                  우리팀
+                  Home
                 </span>
-                <span className="block text-black">{matchData.homeTeam}</span>
+                <span className="block text-black">
+                  {data.matchInfo[0].nickname}
+                </span>
               </div>
               <div className="flex items-center gap-4 text-nowrap">
                 <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
-                  <span>크리스티아누 호날두</span>
+                  <span>
+                    {data.matchInfo[0].shootDetail.map(
+                      (shoot: any, idx: number) => (
+                        <span key={idx}>{shoot.spId}</span>
+                      ),
+                    )}
+                  </span>
                   <span>리오넬 메시</span>
                 </div>
                 <img src="/icons/soccer-ball.png" alt="" />
@@ -82,48 +106,19 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               </div>
               <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
                 <span className="block text-black font-bold mb-[5px]">
-                  상대팀
+                  Away
                 </span>
-                <span className="block text-black">{matchData.awayTeam}</span>
+                <span className="block text-black">
+                  {data.matchInfo[1].nickname}
+                </span>
               </div>
             </div>
 
-            {/* 축구장 */}
-            <div className="">
-              <div className="w-[100%] mx-auto relative">
-                <img
-                  src="/backgroundImgs/field.png"
-                  alt=""
-                  className="relative z-1 mx-auto"
-                />
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-                <div className="absolute z-10"></div>
-              </div>
-            </div>
+            {isMatchDetailToggle ? <MatchDetailRecord /> : <MatchLineup />}
           </div>
         </div>
       </div>
-      <div className="">
+      {/* <div className="">
         <div
           className={`relative flex items-center justify-between bg-gradient-to-r from-green200 to-green100 text-white p-[25px] cursor-pointer transition-all duration-300 ease-in-out ${
             isExpanded ? "rounded-t-[10px] rounded-b-none" : "rounded-[10px]"
@@ -191,7 +186,6 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               </div>
             </div>
 
-            {/* 축구장 */}
             <div className="">
               <div className="w-[100%] mx-auto relative">
                 <img
@@ -225,7 +219,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
