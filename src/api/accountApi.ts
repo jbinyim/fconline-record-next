@@ -57,4 +57,30 @@ const getUserMaxdivision = async (ouid: string) => {
   }
 };
 
-export default { getOuid, getUserBasic, getUserMaxdivision };
+const getUserMatch = async (
+  ouid: string,
+  offset: number = 0,
+  limit: number = 10,
+) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/user/match?ouid=${ouid}&matchtype=50&offset=${offset}&limit=${limit}`,
+      {
+        headers: {
+          "x-nxopen-api-key": API_KEY!,
+        },
+      },
+    );
+
+    if (!res.ok) throw new Error("매치 조회 실패");
+
+    const data = await res.json();
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};
+
+export default { getOuid, getUserBasic, getUserMaxdivision, getUserMatch };

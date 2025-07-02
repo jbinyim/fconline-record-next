@@ -2,39 +2,42 @@
 
 import React from "react";
 import MatchGame from "./_components/MatchGame";
-
-const matchData = [
-  {
-    time: "2025-02-09 16:55",
-    homeTeam: "호날두",
-    awayTeam: "발베르데",
-    homeScore: 4,
-    awayScore: 3,
-  },
-  {
-    time: "2025-02-08 16:00",
-    homeTeam: "메시",
-    awayTeam: "음바페",
-    homeScore: 2,
-    awayScore: 1,
-  },
-  {
-    time: "2025-02-07 15:00",
-    homeTeam: "네이마르",
-    awayTeam: "벤제마",
-    homeScore: 3,
-    awayScore: 2,
-  },
-];
+import { useSearchParams } from "next/navigation";
+import useAccount from "@/hooks/useAccount";
 
 const OfficialGame = () => {
+  const ouid = useSearchParams().get("ouid");
+
+  const {
+    data: matchData,
+    isPending,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useAccount.useUserMatch(ouid!);
+
+  if (isPending) {
+    return <div>loaing</div>;
+  }
+
   return (
     <div>
       <section className="pc:w-[1200px] tablet:w-[80%] w-[90%] mx-auto grid grid-cols-1 gap-[20px]">
-        {matchData.map((match, index) => (
-          <MatchGame key={index} matchData={match} />
+        {matchData?.pages.map((page, idx) => (
+          <React.Fragment key={idx}>
+            {page.map((match: string) => (
+              <MatchGame key={match} matchData={match} />
+            ))}
+          </React.Fragment>
         ))}
       </section>
+      <div>
+        {hasNextPage && (
+          <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+            {isFetchingNextPage ? "불러오는 중..." : "더보기"}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
