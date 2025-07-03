@@ -52,8 +52,8 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               <div className="text-left pl-2">
                 <span className="text-base tablet:text-lg pc:text-xl font-bold">{data.matchInfo[1].nickname}</span>
               </div>
+            </div>
           </div>
-        </div>
           <div className="duration-300">
             <img
               src="/icons/arrow-t.png"
@@ -91,7 +91,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               </button>
             </div>
             <div className="flex items-center justify-center tablet:justify-between mb-6">
-              <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
+              <div className="w-[145px] p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
                 <span className="block text-black font-bold mb-[5px]">
                   Home
                 </span>
@@ -99,24 +99,26 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                   {data.matchInfo[0].nickname}
                 </span>
               </div>
-              <div className="flex items-center gap-4 text-nowrap">
-                <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
-                  <span>
-                    {data.matchInfo[0].shootDetail.map(
-                      (shoot: any, idx: number) => (
-                        <span key={idx}>{shoot.spId}</span>
-                      ),
-                    )}
-                  </span>
-                  <span>리오넬 메시</span>
-                </div>
-                <img src="/icons/soccer-ball.png" alt="" />
-                <div className="text-black grid grid-cols-1 text-left text-xs tablet:text-sm pc:text-base">
-                  <span>즐라탄 이브라히모비치</span>
-                  <span>라울 히메네스</span>
+              <div className="flex-1 flex items-center justify-center text-nowrap">
+                <div className="w-[100%] tablet:w-[70%] pc:w-[50%] grid grid-cols-3 items-center gap-[20px] text-nowrap">
+                  <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
+                    <span className="text-[12px] tablet:text-[13px]">
+                      {data.matchInfo[0].shootDetail.map(
+                        (shoot: any, idx: number) => (
+                          <span key={idx}>{shoot.spId}</span>
+                        ),
+                      )}
+                    </span>
+                    <span className="text-[12px] tablet:text-[13px]">리오넬 메시</span>
+                  </div>
+                  <img src="/icons/soccer-ball.png" alt="" className="text-center mx-auto" />
+                  <div className="text-black grid grid-cols-1 text-left text-xs tablet:text-sm pc:text-base">
+                    <span className="text-[12px] tablet:text-[13px]">즐라탄 이브라히모비치</span>
+                    <span className="text-[12px] tablet:text-[13px]">라울 히메네스</span>
+                  </div>
                 </div>
               </div>
-              <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
+              <div className="w-[145px] p-[10px] hidden tablet:block tablet:text-sm pc:text-base text-right">
                 <span className="block text-black font-bold mb-[5px]">
                   Away
                 </span>
