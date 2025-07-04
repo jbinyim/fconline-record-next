@@ -101,3 +101,6 @@ body {
   font-family: var(--nexon), sans-serif;
 }
 
+.moreten{
+  background: url("/backgroundImgs/bg-rainbow.png") no-repeat 0 0 / 100% 100% !important;
+}
