@@ -4,6 +4,9 @@ import useMatch from "@/hooks/useMatch";
 import { useState } from "react";
 import MatchLineup from "./MatchLineup";
 import MatchDetailRecord from "./MatchDetailRecord";
+import { formatNotificationTime } from "@/utils/timeFormat";
+import useMeta from "@/hooks/useMeta";
+import metaApi from "@/api/metaApi";
 
 interface MatchItemProps {
   matchData: string | undefined;
@@ -34,7 +37,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
           onClick={toggleExpanded}
         >
           <div className="w-[50px] tablet:w-[80px] text-[10px] tablet:text-sm pc:text-base">
-            1분 전
+            {formatNotificationTime(data.matchDate)}
           </div>
           <div className="text-center tablet:m-0">
             <span className="text-base tablet:text-lg pc:text-xl font-bold">
@@ -46,9 +49,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
             <img
               src="/icons/arrow-t.png"
               alt=""
-              className={`duration-300 ${
-                isExpanded ? "rotate-180" : "rotate-0"
-              }`}
+              className={`duration-300 ${isExpanded ? "rotate-180" : "rotate-0"}`}
             />
           </div>
         </div>
@@ -71,8 +72,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               <button
                 onClick={() => setIsMatchDetailToggle(false)}
                 className={`text-gray-600 border-b-2 border-transparent hover:border-gray-600 duration-300 ${
-                  !isMatchDetailToggle &&
-                  "bg-gray-600 text-white rounded-md p-2"
+                  !isMatchDetailToggle && "bg-gray-600 text-white rounded-md p-2"
                 }`}
               >
                 라인업
@@ -80,23 +80,18 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
             </div>
             <div className="flex items-center justify-center tablet:justify-between mb-6">
               <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
-                <span className="block text-black font-bold mb-[5px]">
-                  Home
-                </span>
-                <span className="block text-black">
-                  {data.matchInfo[0].nickname}
-                </span>
+                <span className="block text-black font-bold mb-[5px]">Home</span>
+                <span className="block text-black">{data.matchInfo[0].nickname}</span>
               </div>
               <div className="flex items-center gap-4 text-nowrap">
                 <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
                   <span>
-                    {data.matchInfo[0].shootDetail.map(
-                      (shoot: any, idx: number) => (
-                        <span key={idx}>{shoot.spId}</span>
-                      ),
-                    )}
+                    {data.matchInfo[0].shootDetail.map((shoot: any, idx: number) => (
+                      <div key={idx + 1}>
+                        <span>{shoot.spId}</span>
+                      </div>
+                    ))}
                   </span>
-                  <span>리오넬 메시</span>
                 </div>
                 <img src="/icons/soccer-ball.png" alt="" />
                 <div className="text-black grid grid-cols-1 text-left text-xs tablet:text-sm pc:text-base">
@@ -105,12 +100,8 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                 </div>
               </div>
               <div className="p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
-                <span className="block text-black font-bold mb-[5px]">
-                  Away
-                </span>
-                <span className="block text-black">
-                  {data.matchInfo[1].nickname}
-                </span>
+                <span className="block text-black font-bold mb-[5px]">Away</span>
+                <span className="block text-black">{data.matchInfo[1].nickname}</span>
               </div>
             </div>
 
