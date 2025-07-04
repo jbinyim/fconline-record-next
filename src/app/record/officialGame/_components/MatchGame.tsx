@@ -36,12 +36,24 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
           <div className="w-[50px] tablet:w-[80px] text-[10px] tablet:text-sm pc:text-base">
             1분 전
           </div>
-          <div className="text-center tablet:m-0">
-            <span className="text-base tablet:text-lg pc:text-xl font-bold">
-              {data.matchInfo[0].nickname} {data.matchInfo[0].shoot.goalTotal} :{" "}
-              {data.matchInfo[1].shoot.goalTotal} {data.matchInfo[1].nickname}
-            </span>
+          <div className="flex-1 flex items-center justify-center text-nowrap">
+            <div className="grid grid-cols-3 items-center w-[100%] tablet:w-[85%] pc:w-[50%] ">
+              {/* 왼쪽 플레이어 닉네임 */}
+              <div className="text-right pr-2">
+                <span className="text-base tablet:text-lg pc:text-xl font-bold">{data.matchInfo[0].nickname}</span>
+              </div>
+
+              <div className="text-center">
+                <span className="text-base tablet:text-lg pc:text-xl font-bold">
+                  {data.matchInfo[0].shoot.goalTotal} : {data.matchInfo[1].shoot.goalTotal}
+                </span>
+              </div>
+
+              <div className="text-left pl-2">
+                <span className="text-base tablet:text-lg pc:text-xl font-bold">{data.matchInfo[1].nickname}</span>
+              </div>
           </div>
+        </div>
           <div className="duration-300">
             <img
               src="/icons/arrow-t.png"
