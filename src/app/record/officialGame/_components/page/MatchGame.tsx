@@ -61,11 +61,11 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
               </div>
             </div>
           </div>
-          <div className="duration-300">
+          <div className="duration-300 w-[50px] tablet:w-[80px] flex justify-end items-center">
             <img
               src="/icons/arrow-t.png"
               alt=""
-              className={`duration-300 ${isExpanded ? "rotate-180" : "rotate-0"}`}
+              className={`duration-300 ${isExpanded ? "rotate-180" : "rotate-0"} text-right`}
             />
           </div>
         </div>
