@@ -1,6 +1,5 @@
 "use client";
 
-import useAccount from "@/hooks/useAccount";
 import fo4Mappings from "@/utils/fo4Mappings";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -50,8 +49,7 @@ const RecentRecord = () => {
   });
 
   const isLoading =
-    userBasicQueries.some((q) => q.isLoading) ||
-    userDivisionQueries.some((q) => q.isLoading);
+    userBasicQueries.some((q) => q.isLoading) || userDivisionQueries.some((q) => q.isLoading);
 
   const userInfos: UserInfo[] = recentOuids.map((ouid, idx) => {
     const basicData = userBasicQueries[idx]?.data;
@@ -68,11 +66,7 @@ const RecentRecord = () => {
       <section className="w-full mb-10 pc:mb-20">
         <div className="w-[80%] mx-auto rounded-[20px] bg-white/10 p-8 border border-[rgba(255,255,255,0.2)] pc:w-[1200px]">
           <h2 className="w-full mb-10 font-bold text-lg tablet:text-xl pc:text-2xl">
-            <img
-              src="/icons/recent-record.png"
-              alt=""
-              className="inline-block mr-[15px]"
-            />
+            <img src="/icons/recent-record.png" alt="" className="inline-block mr-[15px]" />
             최근 조회한 유저
           </h2>
           {isLoading && <LoadingSpinner />}
@@ -80,9 +74,7 @@ const RecentRecord = () => {
             {userInfos.map((result) => (
               <li
                 key={result.ouid}
-                onClick={() =>
-                  router.push(`/record/officialGame?ouid=${result.ouid}`)
-                }
+                onClick={() => router.push(`/record/officialGame?ouid=${result.ouid}`)}
                 className="hover:text-green-200 cursor-pointer p-[10px] rounded-[10px] bg-white/10 border border-[rgba(255,255,255,0.1)] text-center w-full flex justify-center duration-300 hover:translate-y-[-5px] hover:bg-white/20 hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
               >
                 <div className="">
@@ -91,9 +83,7 @@ const RecentRecord = () => {
                       {result.nickname}
                     </h3>
                     <img
-                      src={fo4Mappings.getDivisionImg(
-                        result.division[0]?.division,
-                      )}
+                      src={fo4Mappings.getDivisionImg(result.division[0]?.division)}
                       alt=""
                       className=""
                     />
