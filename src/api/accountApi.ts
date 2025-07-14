@@ -57,11 +57,7 @@ const getUserMaxdivision = async (ouid: string) => {
   }
 };
 
-const getUserMatch = async (
-  ouid: string,
-  offset: number = 0,
-  limit: number = 10,
-) => {
+const getUserMatch = async (ouid: string, offset: number = 0, limit: number = 10) => {
   try {
     const res = await fetch(
       `${BASE_URL}/user/match?ouid=${ouid}&matchtype=50&offset=${offset}&limit=${limit}`,
@@ -83,4 +79,5 @@ const getUserMatch = async (
   }
 };
 
-export default { getOuid, getUserBasic, getUserMaxdivision, getUserMatch };
+const accountApi = { getOuid, getUserBasic, getUserMaxdivision, getUserMatch };
+export default accountApi;

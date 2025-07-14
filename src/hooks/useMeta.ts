@@ -9,4 +9,5 @@ const useMetaSpid = (spid: string) => {
   });
 };
 
-export default { useMetaSpid };
+const useMeta = { useMetaSpid };
+export default useMeta;

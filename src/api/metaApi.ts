@@ -20,4 +20,5 @@ const getMetaSpid = async (spid: string) => {
   }
 };
 
-export default { getMetaSpid };
+const metaApi = { getMetaSpid };
+export default metaApi;

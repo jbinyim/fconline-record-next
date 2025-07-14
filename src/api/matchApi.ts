@@ -20,4 +20,5 @@ const getMatchDetail = async (matchid: string | undefined) => {
   }
 };
 
-export default { getMatchDetail };
+const matchApi = { getMatchDetail };
+export default matchApi;

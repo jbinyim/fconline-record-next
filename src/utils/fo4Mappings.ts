@@ -160,4 +160,5 @@ const getSpposition = (spposition: number) => {
   }
 };
 
-export default { getDivision, getDivisionImg, getMatchType, getSpposition };
+const fo4Mappings = { getDivision, getDivisionImg, getMatchType, getSpposition };
+export default fo4Mappings;
