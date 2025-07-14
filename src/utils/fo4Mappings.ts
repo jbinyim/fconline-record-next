@@ -95,4 +95,69 @@ const getMatchType = (toggle: number) => {
   }
 };
 
-export default { getDivision, getDivisionImg, getMatchType };
+const getSpposition = (spposition: number) => {
+  switch (spposition) {
+    case 0:
+      return "GK";
+    case 1:
+      return "SW";
+    case 2:
+      return "RWB";
+    case 3:
+      return "RB";
+    case 4:
+      return "RCB";
+    case 5:
+      return "CB";
+    case 6:
+      return "LCB";
+    case 7:
+      return "LB";
+    case 8:
+      return "LWB";
+    case 9:
+      return "RDM";
+    case 10:
+      return "CDM";
+    case 11:
+      return "LDM";
+    case 12:
+      return "RM";
+    case 13:
+      return "RCM";
+    case 14:
+      return "CM";
+    case 15:
+      return "LCM";
+    case 16:
+      return "LM";
+    case 17:
+      return "RAM";
+    case 18:
+      return "CAM";
+    case 19:
+      return "LAM";
+    case 20:
+      return "RF";
+    case 21:
+      return "CF";
+    case 22:
+      return "LF";
+    case 23:
+      return "RW";
+    case 24:
+      return "RS";
+    case 25:
+      return "ST";
+    case 26:
+      return "LS";
+    case 27:
+      return "LW";
+    case 28:
+      return "SUB";
+    default:
+      return "";
+  }
+};
+
+export default { getDivision, getDivisionImg, getMatchType, getSpposition };
