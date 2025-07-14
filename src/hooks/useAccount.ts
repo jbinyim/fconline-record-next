@@ -34,6 +34,7 @@ const useUserMatch = (ouid: string) => {
       }
       return undefined;
     },
+    enabled: !!ouid,
   });
 };
 
