@@ -1,12 +1,14 @@
 import SearchLayout from "@/app/record/_components/SearchLayout";
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 
 const RecordLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
-      <SearchLayout />
-      {children}
-    </div>
+    <Suspense fallback={<div>로딩중...</div>}>
+      <div>
+        <SearchLayout />
+        {children}
+      </div>
+    </Suspense>
   );
 };
 
