@@ -38,7 +38,7 @@ const OfficialGame = () => {
             disabled={isFetchingNextPage}
             className="mx-auto mt-[45px] block text-center px-[100px] py-[25px] font-bold text-2xl bg-gradient-to-r from-[#50c878] to-[#4ecdc4] rounded-[20px]"
           >
-            {isFetchingNextPage ? "불러오는 중..." : "더보기"}
+            {isFetchingNextPage ? "불러오는 중.." : "더보기"}
           </button>
         )}
       </div>
