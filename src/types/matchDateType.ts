@@ -12,7 +12,7 @@ export interface MatchDetailData {
   cornerKick: number;
 }
 
-interface ShootDetail {
+export interface ShootDetail {
   spId: number;
   result: number;
 }

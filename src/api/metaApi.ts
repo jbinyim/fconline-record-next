@@ -1,3 +1,8 @@
+interface player {
+  id: number | string;
+  name: string;
+}
+
 const getMetaSpid = async (spid: string) => {
   try {
     const res = await fetch(`https://open.api.nexon.com/static/fconline/meta/spid.json`);
@@ -6,7 +11,7 @@ const getMetaSpid = async (spid: string) => {
 
     const data = await res.json();
 
-    const player = data.find((p: any) => p.id === spid);
+    const player = data.find((p: player) => p.id === spid);
 
     return player;
   } catch (e) {

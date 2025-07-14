@@ -7,7 +7,7 @@ import MatchDetailRecord from "./MatchDetailRecord";
 import { formatNotificationTime } from "@/utils/timeFormat";
 import GoalPlayer from "../common/GoalPlayer";
 import { useSearchParams } from "next/navigation";
-import { MatchDetailData, MatchInfo } from "@/types/matchDateType";
+import { MatchDetailData, MatchInfo, ShootDetail } from "@/types/matchDateType";
 
 interface MatchItemProps {
   matchData: string | undefined;
@@ -131,16 +131,20 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                 <div className="w-[100%] tablet:w-[70%] pc:w-[50%] grid grid-cols-3 items-center gap-[20px] text-nowrap">
                   <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
                     <span className="text-[12px] tablet:text-[13px]">
-                      {data.matchInfo[0].shootDetail.map((shoot: any, idx: number) =>
-                        shoot.result === 3 ? <GoalPlayer key={idx} spid={shoot.spId} /> : null,
+                      {data.matchInfo[0].shootDetail.map((shoot: ShootDetail, idx: number) =>
+                        shoot.result === 3 ? (
+                          <GoalPlayer key={idx} spid={String(shoot.spId)} />
+                        ) : null,
                       )}
                     </span>
                   </div>
                   <img src="/icons/soccer-ball.png" alt="" className="text-center mx-auto" />
                   <div className="text-black grid grid-cols-1 text-left text-xs tablet:text-sm pc:text-base">
                     <span className="text-[12px] tablet:text-[13px]">
-                      {data.matchInfo[1].shootDetail.map((shoot: any, idx: number) =>
-                        shoot.result === 3 ? <GoalPlayer key={idx} spid={shoot.spId} /> : null,
+                      {data.matchInfo[1].shootDetail.map((shoot: ShootDetail, idx: number) =>
+                        shoot.result === 3 ? (
+                          <GoalPlayer key={idx} spid={String(shoot.spId)} />
+                        ) : null,
                       )}
                     </span>
                   </div>

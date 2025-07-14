@@ -9,7 +9,7 @@ const SearchRecord = () => {
   const [userName, setUserName] = useState<string>("");
   const router = useRouter();
 
-  const { mutate, data, isPending, error } = useAccount.useOuid();
+  const { mutate, data } = useAccount.useOuid();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,13 +28,8 @@ const SearchRecord = () => {
     <div>
       <section className="searchArea mb-[30px] tablet:mb-[65px] pc:mb-[100px]">
         <div className="w-[80%] my-0 mx-auto tablet:w-[60%] pc:w-[40%]">
-          <h2 className="w-[100%] mx-auto text-center mb-[15px] font-bold text-xl">
-            유저 검색
-          </h2>
-          <form
-            onSubmit={handleSubmit}
-            className="relative w-[100%] text-center"
-          >
+          <h2 className="w-[100%] mx-auto text-center mb-[15px] font-bold text-xl">유저 검색</h2>
+          <form onSubmit={handleSubmit} className="relative w-[100%] text-center">
             <img
               src="/icons/search-icon.png"
               alt="검색 아이콘"
