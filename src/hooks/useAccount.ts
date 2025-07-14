@@ -26,8 +26,7 @@ const useUsermaxdivision = (ouid: string) => {
 const useUserMatch = (ouid: string) => {
   return useInfiniteQuery({
     queryKey: ["userMatch", ouid],
-    queryFn: ({ pageParam = 0 }) =>
-      accountApi.getUserMatch(ouid, pageParam, 10),
+    queryFn: ({ pageParam = 0 }) => accountApi.getUserMatch(ouid, pageParam, 10),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       if (lastPage.length > 0) {
@@ -38,4 +37,5 @@ const useUserMatch = (ouid: string) => {
   });
 };
 
-export default { useOuid, useUserBasic, useUsermaxdivision, useUserMatch };
+const useAccount = { useOuid, useUserBasic, useUsermaxdivision, useUserMatch };
+export default useAccount;

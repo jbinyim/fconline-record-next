@@ -9,4 +9,5 @@ const useMatchDetail = (matchid: string | undefined) => {
   });
 };
 
-export default { useMatchDetail };
+const useMatch = { useMatchDetail };
+export default useMatch;
