@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+
 import React from "react";
 
 const Board = () => {
@@ -19,7 +20,6 @@ const Board = () => {
               <button className="outline-0 flex items-center center tablet:justify-around gap-[20px] px-[20px] tablet:px-[15px] py-[10px] tablet:py-[5px] rounded-[20px] bg-white">
                 <span className="hidden tablet:block text-black text-nowrap">전체</span>
                 <img src="/icons/triangle.png" alt="" className="block" />
-                <Image src={"/icons/triangle.png"} alt="토글 버튼" width={} height={} />
               </button>
             </div>
           </header>
