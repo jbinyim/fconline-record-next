@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Board = () => {
@@ -10,7 +11,9 @@ const Board = () => {
           </div>
           <div className="flex justify-between items-center gap-[20px]">
             <input type="text" name="" className="w-[190px] tablet:w-[280px] pc:w-[445px] bg-white px-[15px] py-[5px] rounded-[20px] text-black outline-0" />
-            <button className="outline-0 flex items-center center tablet:justify-around gap-[20px] px-[20px] tablet:px-[15px] py-[10px] tablet:py-[5px] rounded-[20px] bg-white"><span className="hidden tablet:block text-black text-nowrap">전체</span><img src="/icons/triangle.png" alt="" className="block" /></button>
+            <button className="outline-0 flex items-center center tablet:justify-around gap-[20px] px-[20px] tablet:px-[15px] py-[10px] tablet:py-[5px] rounded-[20px] bg-white"><span className="hidden tablet:block text-black text-nowrap">전체</span>
+              <img src="/icons/triangle.png" alt="토글 버튼" className="block" />
+            </button>
           </div>
         </header>
         <main className="">

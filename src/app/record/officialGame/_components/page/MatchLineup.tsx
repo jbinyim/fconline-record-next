@@ -539,6 +539,59 @@ const MatchLineup = () => {
             </span>
           </div>
         </div>
+
+        <div className="absolute z-10 top-[39%] left-[70%] translate-x-[-70%] translate-y-[-39%] tablet:left-[40%] tablet:top-[30%] tablet:translate-x-[-40%] tablet:translate-y-[-30%]">
+          {" "}
+          {/* 홈팀 LF */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              LF 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute z-10 top-[39%] left-[30%] translate-x-[-30%] translate-y-[-39%] tablet:left-[40%] tablet:top-[70%] tablet:translate-x-[-40%] tablet:translate-y-[-70%]">
+          {" "}
+          {/* 홈팀 RF */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              RF 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
         <div className="absolute z-10 top-[39%] left-[90%] translate-x-[-90%] translate-y-[-39%] tablet:left-[40%] tablet:top-[10%] tablet:translate-x-[-40%] tablet:translate-y-[-10%]">
           {" "}
           {/* 홈팀 LW */}
@@ -605,6 +658,58 @@ const MatchLineup = () => {
             />
             <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
               ST 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute z-10 top-[46%] left-[70%] translate-x-[-70%] translate-y-[-46%] tablet:left-[46%] tablet:top-[30%] tablet:translate-x-[-46%] tablet:translate-y-[-30%]">
+          {" "}
+          {/* 홈팀 LS */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              LS 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute z-10 top-[46%] left-[30%] translate-x-[-30%] translate-y-[-46%] tablet:left-[46%] tablet:top-[70%] tablet:translate-x-[-46%] tablet:translate-y-[-70%]">
+          {" "}
+          {/* 홈팀 RS */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              RS 노이어
             </span>
             <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
               7.0
@@ -1140,6 +1245,59 @@ const MatchLineup = () => {
             </span>
           </div>
         </div>
+
+        <div className="absolute z-10 top-[62%] left-[30%] translate-x-[-30%] translate-y-[-62%] tablet:left-[60%] tablet:top-[70%] tablet:translate-x-[-60%] tablet:translate-y-[-70%]">
+          {" "}
+          {/* 어웨이팀 LF */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              LF 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute z-10 top-[62%] left-[70%] translate-x-[-70%] translate-y-[-62%] tablet:left-[60%] tablet:top-[30%] tablet:translate-x-[-60%] tablet:translate-y-[-30%]">
+          {" "}
+          {/* 어웨이팀 RF */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              RF 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
         <div className="absolute z-10 top-[62%] left-[10%] translate-x-[-10%] translate-y-[-62%] tablet:left-[60%] tablet:top-[10%] tablet:translate-x-[-60%] tablet:translate-y-[-10%]">
           {" "}
           {/* 어웨이팀 LW */}
@@ -1215,6 +1373,59 @@ const MatchLineup = () => {
             </span>
           </div>
         </div>
+
+        <div className="absolute z-10 top-[54%] left-[30%] translate-x-[-30%] translate-y-[-54%] tablet:left-[54%] tablet:top-[70%] tablet:translate-x-[-54%] tablet:translate-y-[-70%]">
+          {" "}
+          {/* 어웨이팀 LS */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              LS 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute z-10 top-[54%] left-[70%] translate-x-[-70%] translate-y-[-54%] tablet:left-[54%] tablet:top-[30%] tablet:translate-x-[-54%] tablet:translate-y-[-30%]">
+          {" "}
+          {/* 어웨이팀 RS */}
+          <div className="relative">
+            <img
+              src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
+              alt=""
+              className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
+            />
+            <img
+              src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
+              alt=""
+              className="absolute left-[-3px] bottom-[-3px] w-[20px]"
+            />
+            <span className="absolute bottom-[-20px] text-[8px] tablet:text-[9px] pc:text-[10px] tablet:bottom-[-25px] left-[50%] translate-x-[-50%] font-bold text-nowrap px-[5px] py-[1px] rounded-[10px] border-white/20 border">
+              RS 노이어
+            </span>
+            <span className="absolute bg-[#33C771] font-bold text-[8px] tablet:text-[9px] pc:text-[10px] top-[-5px] right-[-10px] px-[4px] py-[1px] tablet:px-[5px] tablet:py-[2px] rounded-[5px]">
+              7.0
+            </span>
+            <span className="absolute bottom-[-5px] right-[-10px] w-[15px] tablet:w-[20px] pc:w-[20px] text-[9px] tablet:text-[11px] pc:text-[13px] rounded-[5px] text-center text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]">
+              1
+            </span>
+          </div>
+        </div>
+
       </div>
     </div>
   );
