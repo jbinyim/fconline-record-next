@@ -110,7 +110,7 @@ const Calculate = () => {
 
   useEffect(() => {
     calculateFees();
-  }, [inputGroups, isPremiumChecked, isTopClassChecked]);
+  }, [inputGroups, isPremiumChecked, isTopClassChecked, calculateFees]);
 
   const addInputGroup = () => {
     const newId = Math.max(...inputGroups.map((g) => g.id)) + 1;

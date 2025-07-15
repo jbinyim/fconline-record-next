@@ -5,7 +5,6 @@ import useAccount from "@/hooks/useAccount";
 import fo4Mappings from "@/utils/fo4Mappings";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 type DivisionInfo = {
   matchType: number;
