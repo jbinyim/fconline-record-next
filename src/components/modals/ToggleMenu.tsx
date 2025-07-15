@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 interface ToggleMenuProps {
   isOpen: boolean;
@@ -26,28 +27,43 @@ const ToggleMenu: React.FC<ToggleMenuProps> = ({ isOpen, onClose }) => {
         <div className="text-sm font-normal">
           <ul className="text-black grid grid-cols-1 gap-[50px]">
             <li className="w-[120px] cursor-pointer ml-5">
-              <img
-                src="/icons/notice.png"
-                alt=""
-                className="inline-block mr-[20px]"
-              />
-              공지사항
+              <Link
+              href="/board"
+              onClick={onClose}
+              >
+                <img
+                  src="/icons/notice.png"
+                  alt=""
+                  className="inline-block mr-[20px]"
+                />
+                공지사항
+              </Link>
             </li>
             <li className="w-[120px] cursor-pointer ml-5">
-              <img
-                src="/icons/mini-chart.png"
-                alt=""
-                className="inline-block mr-[20px]"
-              />
-              수수료계산기
+              <Link
+              href="/calculate"
+              onClick={onClose}
+              >
+                <img
+                  src="/icons/mini-chart.png"
+                  alt=""
+                  className="inline-block mr-[20px]"
+                />
+                수수료계산기
+              </Link>
             </li>
             <li className="w-[120px] cursor-pointer ml-5">
-              <img
-                src="/icons/message.png"
-                alt=""
-                className="inline-block mr-[20px]"
-              />
-              게시판
+              <Link
+              href="/record/officialGame"
+              onClick={onClose}
+              >
+                <img
+                  src="/icons/message.png"
+                  alt=""
+                  className="inline-block mr-[20px]"
+                />
+                게시판
+              </Link>
             </li>
             <li className="w-[120px] cursor-pointer ml-5">
               <img
