@@ -46,10 +46,12 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
     cornerKick: matchInfo.matchDetail.cornerKick,
   });
 
+  console.log(data.matchInfo[0]);
+
   return (
     <div>
       <div className="">
-        {/* 초기 조회 정보 */}
+        {/* 초기 조회 정보  점수판 */}
         <div
           className={`relative flex items-center justify-between bg-gradient-to-r ${
             matchInfo === "승" && "from-green200 to-green100"
@@ -162,7 +164,10 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                 awayDetail={extractDetailData(data.matchInfo[1])}
               />
             ) : (
-              <MatchLineup />
+              <MatchLineup
+                homePlayer={data.matchInfo[0].player}
+                awayPlayer={data.matchInfo[1].player}
+              />
             )}
           </div>
         </div>

@@ -98,67 +98,256 @@ const getMatchType = (toggle: number) => {
 const getSpposition = (spposition: number) => {
   switch (spposition) {
     case 0:
-      return "GK";
+      return {
+        name: "GK",
+        class: {
+          home: "z-10 top-[1%] left-[50%] translate-x-[-50%] translate-y-[-1%] tablet:left-[3%] tablet:top-[50%] tablet:translate-x-[-3%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[96%] left-[50%] translate-x-[-50%] translate-y-[-96%] tablet:left-[97%] tablet:top-[50%] tablet:translate-x-[-97%] tablet:translate-y-[-50%]",
+        },
+      };
     case 1:
-      return "SW";
+      return {
+        name: "SW",
+        class: {
+          home: "z-10 top-[12%] left-[50%] translate-x-[-50%] translate-y-[-12%] tablet:left-[12%] tablet:top-[50%] tablet:translate-x-[-12%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[87%] left-[50%] translate-x-[-50%] translate-y-[-87%] tablet:left-[88%] tablet:top-[50%] tablet:translate-x-[-88%] tablet:translate-y-[-50%]",
+        },
+      };
     case 2:
-      return "RWB";
+      return {
+        name: "RWB",
+        class: {
+          home: "z-10 top-[16%] left-[10%] translate-x-[-10%] translate-y-[-16%] tablet:left-[18%] tablet:top-[90%] tablet:translate-x-[-18%] tablet:translate-y-[-90%]",
+          away: "z-10 top-[84%] left-[90%] translate-x-[-90%] translate-y-[-84%] tablet:left-[82%] tablet:top-[90%] tablet:translate-x-[-82%] tablet:translate-y-[-90%]",
+        },
+      };
     case 3:
-      return "RB";
+      return {
+        name: "RB",
+        class: {
+          home: "z-10 top-[10%] left-[10%] translate-x-[-10%] translate-y-[-10%] tablet:left-[12%] tablet:top-[90%] tablet:translate-x-[-12%] tablet:translate-y-[-90%]",
+          away: "z-10 top-[90%] left-[90%] translate-x-[-90%] translate-y-[-90%] tablet:left-[88%] tablet:top-[90%] tablet:translate-x-[-88%] tablet:translate-y-[-90%]",
+        },
+      };
     case 4:
-      return "RCB";
+      return {
+        name: "RCB",
+        class: {
+          home: "z-10 top-[10%] left-[30%] translate-x-[-30%] translate-y-[-10%] tablet:left-[12%] tablet:top-[70%] tablet:translate-x-[-12%] tablet:translate-y-[-70%]",
+          away: "z-10 top-[90%] left-[70%] translate-x-[-70%] translate-y-[-90%] tablet:left-[88%] tablet:top-[70%] tablet:translate-x-[-88%] tablet:translate-y-[-70%]",
+        },
+      };
     case 5:
-      return "CB";
+      return {
+        name: "CB",
+        class: {
+          home: "z-10 top-[8%] left-[50%] translate-x-[-50%] translate-y-[-8%] tablet:left-[8%] tablet:top-[50%] tablet:translate-x-[-8%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[90%] left-[50%] translate-x-[-50%] translate-y-[-90%] tablet:left-[92%] tablet:top-[50%] tablet:translate-x-[-92%] tablet:translate-y-[-50%]",
+        },
+      };
     case 6:
-      return "LCB";
+      return {
+        name: "LCB",
+        class: {
+          home: "z-10 top-[10%] left-[70%] translate-x-[-70%] translate-y-[-10%] tablet:left-[12%] tablet:top-[30%] tablet:translate-x-[-12%] tablet:translate-y-[-30%]",
+          away: "z-10 top-[90%] left-[30%] translate-x-[-30%] translate-y-[-90%] tablet:left-[88%] tablet:top-[30%] tablet:translate-x-[-88%] tablet:translate-y-[-30%]",
+        },
+      };
     case 7:
-      return "LB";
+      return {
+        name: "LB",
+        class: {
+          home: "z-10 top-[10%] left-[90%] translate-x-[-90%] translate-y-[-10%] tablet:left-[12%] tablet:top-[10%] tablet:translate-x-[-12%] tablet:translate-y-[-10%]",
+          away: "z-10 top-[90%] left-[10%] translate-x-[-10%] translate-y-[-90%] tablet:left-[88%] tablet:top-[10%] tablet:translate-x-[-88%] tablet:translate-y-[-10%]",
+        },
+      };
     case 8:
-      return "LWB";
+      return {
+        name: "LWB",
+        class: {
+          home: "z-10 top-[16%] left-[90%] translate-x-[-90%] translate-y-[-16%] tablet:left-[18%] tablet:top-[10%] tablet:translate-x-[-18%] tablet:translate-y-[-10%]",
+          away: "z-10 top-[84%] left-[10%] translate-x-[-10%] translate-y-[-84%] tablet:left-[82%] tablet:top-[10%] tablet:translate-x-[-82%] tablet:translate-y-[-10%]",
+        },
+      };
     case 9:
-      return "RDM";
+      return {
+        name: "RDM",
+        class: {
+          home: "z-10 top-[18%] left-[30%] translate-x-[-30%] translate-y-[-18%] tablet:left-[20%] tablet:top-[70%] tablet:translate-x-[-20%] tablet:translate-y-[-70%]",
+          away: "z-10 top-[83%] left-[70%] translate-x-[-70%] translate-y-[-83%] tablet:left-[80%] tablet:top-[70%] tablet:translate-x-[-80%] tablet:translate-y-[-70%]",
+        },
+      };
     case 10:
-      return "CDM";
+      return {
+        name: "CDM",
+        class: {
+          home: "z-10 top-[18%] left-[50%] translate-x-[-50%] translate-y-[-18%] tablet:left-[20%] tablet:top-[50%] tablet:translate-x-[-20%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[83%] left-[50%] translate-x-[-50%] translate-y-[-83%] tablet:left-[80%] tablet:top-[50%] tablet:translate-x-[-80%] tablet:translate-y-[-50%]",
+        },
+      };
     case 11:
-      return "LDM";
+      return {
+        name: "LDM",
+        class: {
+          home: "z-10 top-[18%] left-[70%] translate-x-[-70%] translate-y-[-18%] tablet:left-[20%] tablet:top-[30%] tablet:translate-x-[-20%] tablet:translate-y-[-30%]",
+          away: "z-10 top-[83%] left-[30%] translate-x-[-30%] translate-y-[-83%] tablet:left-[80%] tablet:top-[30%] tablet:translate-x-[-80%] tablet:translate-y-[-30%]",
+        },
+      };
     case 12:
-      return "RM";
+      return {
+        name: "RM",
+        class: {
+          home: "z-10 top-[25%] left-[10%] translate-x-[-10%] translate-y-[-25%] tablet:left-[28%] tablet:top-[90%] tablet:translate-x-[-28%] tablet:translate-y-[-90%]",
+          away: "z-10 top-[76%] left-[90%] translate-x-[-90%] translate-y-[-76%] tablet:left-[72%] tablet:top-[90%] tablet:translate-x-[-72%] tablet:translate-y-[-90%]",
+        },
+      };
     case 13:
-      return "RCM";
+      return {
+        name: "RCM",
+        class: {
+          home: "z-10 top-[25%] left-[30%] translate-x-[-30%] translate-y-[-25%] tablet:left-[28%] tablet:top-[70%] tablet:translate-x-[-28%] tablet:translate-y-[-70%]",
+          away: "z-10 top-[76%] left-[70%] translate-x-[-70%] translate-y-[-76%] tablet:left-[72%] tablet:top-[70%] tablet:translate-x-[-72%] tablet:translate-y-[-70%]",
+        },
+      };
     case 14:
-      return "CM";
+      return {
+        name: "CM",
+        class: {
+          home: "z-10 top-[25%] left-[50%] translate-x-[-50%] translate-y-[-25%] tablet:left-[28%] tablet:top-[50%] tablet:translate-x-[-28%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[76%] left-[50%] translate-x-[-50%] translate-y-[-76%] tablet:left-[72%] tablet:top-[50%] tablet:translate-x-[-72%] tablet:translate-y-[-50%]",
+        },
+      };
     case 15:
-      return "LCM";
+      return {
+        name: "LCM",
+        class: {
+          home: "z-10 top-[25%] left-[70%] translate-x-[-70%] translate-y-[-25%] tablet:left-[28%] tablet:top-[30%] tablet:translate-x-[-28%] tablet:translate-y-[-30%]",
+          away: "z-10 top-[76%] left-[30%] translate-x-[-30%] translate-y-[-76%] tablet:left-[72%] tablet:top-[30%] tablet:translate-x-[-72%] tablet:translate-y-[-30%]",
+        },
+      };
     case 16:
-      return "LM";
+      return {
+        name: "LM",
+        class: {
+          home: "z-10 top-[25%] left-[90%] translate-x-[-90%] translate-y-[-25%] tablet:left-[28%] tablet:top-[10%] tablet:translate-x-[-28%] tablet:translate-y-[-10%]",
+          away: "z-10 top-[76%] left-[10%] translate-x-[-10%] translate-y-[-76%] tablet:left-[72%] tablet:top-[10%] tablet:translate-x-[-72%] tablet:translate-y-[-10%]",
+        },
+      };
     case 17:
-      return "RAM";
+      return {
+        name: "RAM",
+        class: {
+          home: "z-10 top-[32%] left-[30%] translate-x-[-30%] translate-y-[-32%] tablet:left-[34%] tablet:top-[70%] tablet:translate-x-[-34%] tablet:translate-y-[-70%]",
+          away: "z-10 top-[69%] left-[70%] translate-x-[-70%] translate-y-[-69%] tablet:left-[66%] tablet:top-[70%] tablet:translate-x-[-66%] tablet:translate-y-[-70%]",
+        },
+      };
     case 18:
-      return "CAM";
+      return {
+        name: "CAM",
+        class: {
+          home: "z-10 top-[32%] left-[50%] translate-x-[-50%] translate-y-[-32%] tablet:left-[34%] tablet:top-[50%] tablet:translate-x-[-34%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[69%] left-[50%] translate-x-[-50%] translate-y-[-69%] tablet:left-[66%] tablet:top-[50%] tablet:translate-x-[-66%] tablet:translate-y-[-50%]",
+        },
+      };
     case 19:
-      return "LAM";
+      return {
+        name: "LAM",
+        class: {
+          home: "z-10 top-[32%] left-[70%] translate-x-[-70%] translate-y-[-32%] tablet:left-[34%] tablet:top-[30%] tablet:translate-x-[-34%] tablet:translate-y-[-30%]",
+          away: "z-10 top-[69%] left-[30%] translate-x-[-30%] translate-y-[-69%] tablet:left-[66%] tablet:top-[30%] tablet:translate-x-[-66%] tablet:translate-y-[-30%]",
+        },
+      };
     case 20:
-      return "RF";
+      return {
+        name: "RF",
+        class: {
+          home: "absolute z-10 top-[39%] left-[30%] translate-x-[-30%] translate-y-[-39%] tablet:left-[40%] tablet:top-[70%] tablet:translate-x-[-40%] tablet:translate-y-[-70%]",
+          away: "absolute z-10 top-[62%] left-[70%] translate-x-[-70%] translate-y-[-62%] tablet:left-[60%] tablet:top-[30%] tablet:translate-x-[-60%] tablet:translate-y-[-30%]",
+        },
+      };
     case 21:
-      return "CF";
+      return {
+        name: "CF",
+        class: {
+          home: "z-10 top-[39%] left-[50%] translate-x-[-50%] translate-y-[-39%] tablet:left-[40%] tablet:top-[50%] tablet:translate-x-[-40%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[62%] left-[50%] translate-x-[-50%] translate-y-[-62%] tablet:left-[60%] tablet:top-[50%] tablet:translate-x-[-60%] tablet:translate-y-[-50%]",
+        },
+      };
     case 22:
-      return "LF";
+      return {
+        name: "LF",
+        class: {
+          home: "absolute z-10 top-[39%] left-[70%] translate-x-[-70%] translate-y-[-39%] tablet:left-[40%] tablet:top-[30%] tablet:translate-x-[-40%] tablet:translate-y-[-30%]",
+          away: "absolute z-10 top-[62%] left-[30%] translate-x-[-30%] translate-y-[-62%] tablet:left-[60%] tablet:top-[70%] tablet:translate-x-[-60%] tablet:translate-y-[-70%]",
+        },
+      };
     case 23:
-      return "RW";
+      return {
+        name: "RW",
+        class: {
+          home: "z-10 top-[39%] left-[10%] translate-x-[-10%] translate-y-[-39%] tablet:left-[40%] tablet:top-[90%] tablet:translate-x-[-40%] tablet:translate-y-[-90%]",
+          away: "z-10 top-[62%] left-[90%] translate-x-[-90%] translate-y-[-62%] tablet:left-[60%] tablet:top-[90%] tablet:translate-x-[-60%] tablet:translate-y-[-90%]",
+        },
+      };
     case 24:
-      return "RS";
+      return {
+        name: "RS",
+        class: {
+          home: "absolute z-10 top-[46%] left-[30%] translate-x-[-30%] translate-y-[-46%] tablet:left-[46%] tablet:top-[70%] tablet:translate-x-[-46%] tablet:translate-y-[-70%]",
+          away: "absolute z-10 top-[54%] left-[70%] translate-x-[-70%] translate-y-[-54%] tablet:left-[54%] tablet:top-[30%] tablet:translate-x-[-54%] tablet:translate-y-[-30%]",
+        },
+      };
     case 25:
-      return "ST";
+      return {
+        name: "ST",
+        class: {
+          home: "z-10 top-[46%] left-[50%] translate-x-[-50%] translate-y-[-46%] tablet:left-[46%] tablet:top-[50%] tablet:translate-x-[-46%] tablet:translate-y-[-50%]",
+          away: "z-10 top-[54%] left-[50%] translate-x-[-50%] translate-y-[-54%] tablet:left-[54%] tablet:top-[50%] tablet:translate-x-[-54%] tablet:translate-y-[-50%]",
+        },
+      };
     case 26:
-      return "LS";
+      return {
+        name: "LS",
+        class: {
+          home: "absolute z-10 top-[46%] left-[70%] translate-x-[-70%] translate-y-[-46%] tablet:left-[46%] tablet:top-[30%] tablet:translate-x-[-46%] tablet:translate-y-[-30%]",
+          away: "absolute z-10 top-[54%] left-[30%] translate-x-[-30%] translate-y-[-54%] tablet:left-[54%] tablet:top-[70%] tablet:translate-x-[-54%] tablet:translate-y-[-70%]",
+        },
+      };
     case 27:
-      return "LW";
+      return {
+        name: "LW",
+        class: {
+          home: "z-10 top-[39%] left-[90%] translate-x-[-90%] translate-y-[-39%] tablet:left-[40%] tablet:top-[10%] tablet:translate-x-[-40%] tablet:translate-y-[-10%]",
+          away: "z-10 top-[62%] left-[10%] translate-x-[-10%] translate-y-[-62%] tablet:left-[60%] tablet:top-[10%] tablet:translate-x-[-60%] tablet:translate-y-[-10%]",
+        },
+      };
     case 28:
-      return "SUB";
+      return {
+        name: "SUB",
+        class: {
+          home: "hidden",
+          away: "hidden",
+        },
+      };
+
     default:
       return "";
   }
 };
 
-const fo4Mappings = { getDivision, getDivisionImg, getMatchType, getSpposition };
+const getGradeColor = (grade: number) => {
+  if (grade === 1) {
+    return "text-[#c5c8c9] font-bold border-[#393a3c] border bg-gradient-to-r from-[#51545a] to-[#42464d]";
+  } else if (grade >= 2 && grade <= 4) {
+    return "text-[#7e3f27] font-bold border-[#864229] border bg-gradient-to-r from-[#de946b] to-[#ad5f42]";
+  } else if (grade >= 5 && grade <= 7) {
+    return "text-[#4e545e] font-bold border-[#a5a8ae] border bg-gradient-to-r from-[#d8d9dc] to-[#b8bdca]";
+  } else if (grade >= 8 && grade <= 10) {
+    return "text-[#695100] font-bold border-[#cda000] border bg-gradient-to-r from-[#f9dd62] to-[#dca908]";
+  } else if (grade >= 11 && grade <= 13) {
+    return "moreten text-[#2d2b43] font-bold border-[#5274c0] border";
+  }
+};
+
+const fo4Mappings = { getDivision, getDivisionImg, getMatchType, getSpposition, getGradeColor };
 export default fo4Mappings;
