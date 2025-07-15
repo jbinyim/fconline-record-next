@@ -11,7 +11,9 @@ const getMetaSpid = async (spid: string) => {
 
     const data = await res.json();
 
-    const player = data.find((p: player) => p.id === spid);
+    const player = data.find((p: player) => String(p.id) === spid);
+
+    if (!player) throw new Error("선수 정보를 찾을 수 없습니다");
 
     return player;
   } catch (e) {

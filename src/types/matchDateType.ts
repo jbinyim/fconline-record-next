@@ -47,3 +47,35 @@ export interface MatchInfo {
   pass: Pass;
   matchDetail: MatchDetail;
 }
+
+interface PlayerStatus {
+  aerialSuccess: number;
+  aerialTry: number;
+  assist: number;
+  ballPossesionSuccess: number;
+  ballPossesionTry: number;
+  block: number;
+  blockTry: number;
+  defending: number;
+  dribble: number;
+  dribbleSuccess: number;
+  dribbleTry: number;
+  effectiveShoot: number;
+  goal: number;
+  intercept: number;
+  passSuccess: number;
+  passTry: number;
+  redCards: number;
+  shoot: number;
+  spRating: number;
+  tackle: number;
+  tackleTry: number;
+  yellowCards: number;
+}
+
+export interface SpPlayer {
+  spId: number;
+  spPosition: number;
+  spGrade: number;
+  status: PlayerStatus;
+}
