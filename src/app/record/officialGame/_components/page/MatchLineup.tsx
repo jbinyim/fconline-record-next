@@ -13,14 +13,19 @@ const MatchLineup = ({ homePlayer, awayPlayer }: MatchLineupProps) => {
       <div className="w-full mx-auto relative">
         {/* 경기장 이미지 */}
         <img
-          src="/backgroundImgs/field.png"
+          src="/backgroundImgs/pc-field.png"
           alt=""
-          className="relative z-1 mx-auto hidden tablet:block"
+          className="relative z-1 mx-auto w-full h-[840px] hidden tablet:hidden pc:block"
+        />
+        <img
+          src="/backgroundImgs/tablet-field.png"
+          alt=""
+          className="relative z-1 mx-auto w-full h-[850px] hidden tablet:block pc:hidden"
         />
         <img
           src="/backgroundImgs/m-field.png"
           alt=""
-          className="relative z-1 mx-auto block tablet:hidden"
+          className="relative z-1 mx-auto w-full h-[880px] block tablet:hidden pc:hidden"
         />
 
         {homePlayer.map((p) => (
