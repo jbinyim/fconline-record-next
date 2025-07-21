@@ -9,13 +9,13 @@ interface MatchLineupProps {
 
 const MatchLineup = ({ homePlayer, awayPlayer }: MatchLineupProps) => {
   return (
-    <div className="">
+    <div className="h-[1100px]">
       <div className="w-full mx-auto relative">
         {/* 경기장 이미지 */}
         <img
           src="/backgroundImgs/pc-field.png"
           alt=""
-          className="relative z-1 mx-auto w-full h-[840px] hidden tablet:hidden pc:block"
+          className="relative z-1 mx-auto w-full hidden tablet:hidden pc:block"
         />
         <img
           src="/backgroundImgs/tablet-field.png"

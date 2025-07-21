@@ -173,8 +173,8 @@ const getSpposition = (spposition: number) => {
       return {
         name: "RDM",
         class: {
-          home: "z-10 top-[18%] left-[30%] translate-x-[-30%] translate-y-[-18%]",
-          away: "z-10 top-[83%] left-[70%] translate-x-[-70%] translate-y-[-83%]",
+          home: "z-10 top-[18%] left-[40%] translate-x-[-40%] translate-y-[-18%]",
+          away: "z-10 top-[83%] left-[60%] translate-x-[-60%] translate-y-[-83%]",
         },
       };
     case 10:
@@ -189,8 +189,8 @@ const getSpposition = (spposition: number) => {
       return {
         name: "LDM",
         class: {
-          home: "z-10 top-[18%] left-[70%] translate-x-[-70%] translate-y-[-18%]",
-          away: "z-10 top-[83%] left-[30%] translate-x-[-30%] translate-y-[-83%]",
+          home: "z-10 top-[18%] left-[60%] translate-x-[-60%] translate-y-[-18%]",
+          away: "z-10 top-[83%] left-[40%] translate-x-[-40%] translate-y-[-83%]",
         },
       };
     case 12:
@@ -237,8 +237,8 @@ const getSpposition = (spposition: number) => {
       return {
         name: "RAM",
         class: {
-          home: "z-10 top-[32%] left-[30%] translate-x-[-30%] translate-y-[-32%]",
-          away: "z-10 top-[69%] left-[70%] translate-x-[-70%] translate-y-[-69%]",
+          home: "z-10 top-[32%] left-[20%] translate-x-[-20%] translate-y-[-32%]",
+          away: "z-10 top-[69%] left-[80%] translate-x-[-80%] translate-y-[-69%]",
         },
       };
     case 18:
@@ -253,8 +253,8 @@ const getSpposition = (spposition: number) => {
       return {
         name: "LAM",
         class: {
-          home: "z-10 top-[32%] left-[70%] translate-x-[-70%] translate-y-[-32%]",
-          away: "z-10 top-[69%] left-[30%] translate-x-[-30%] translate-y-[-69%]",
+          home: "z-10 top-[32%] left-[80%] translate-x-[-80%] translate-y-[-32%]",
+          away: "z-10 top-[69%] left-[20%] translate-x-[-20%] translate-y-[-69%]",
         },
       };
     case 20:
