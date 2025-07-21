@@ -69,20 +69,20 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
             <div className="grid grid-cols-3 items-center w-[100%] tablet:w-[85%] pc:w-[50%] ">
               {/* 왼쪽 플레이어 닉네임 */}
               <div className="text-right pr-2">
-                <span className="text-base tablet:text-lg pc:text-xl font-bold">
+                <span className="text-xs tablet:text-base pc:text-xl font-bold">
                   {data.matchInfo[0].nickname}
                 </span>
               </div>
 
               <div className="text-center">
-                <span className="text-base tablet:text-lg pc:text-xl font-bold">
+                <span className="text-xs tablet:text-base pc:text-xl font-bold">
                   {data.matchInfo[0].shoot.goalTotal || 0} :{" "}
                   {data.matchInfo[1].shoot.goalTotal || 0}
                 </span>
               </div>
 
               <div className="text-left pl-2">
-                <span className="text-base tablet:text-lg pc:text-xl font-bold">
+                <span className="text-xs tablet:text-base pc:text-xl font-bold">
                   {data.matchInfo[1].nickname}
                 </span>
               </div>
@@ -100,7 +100,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
         {/*상세 정보 */}
         <div
           className={`bg-red50 border-l border-r border-b border-gray-200 transition-all duration-300 ease-in-out overflow-hidden rounded-b-[10px] ${
-            isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+            isExpanded ? "max-h-[1000px] pc:max-h-[1250px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="pb-3">
@@ -125,14 +125,14 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
             </div>
             {/* 유저닉네임 + 골 넣은 선수 정보 */}
             <div className="flex items-center justify-center tablet:justify-between mb-6">
-              <div className="w-[145px] p-[10px] hidden tablet:block tablet:text-sm pc:text-base">
+              <div className="w-[145px] p-[10px] hidden pc:block tablet:text-sm pc:text-base">
                 <span className="block text-black font-bold mb-[5px]">Home</span>
                 <span className="block text-black">{data.matchInfo[0].nickname}</span>
               </div>
               <div className="flex-1 flex items-center justify-center text-nowrap">
-                <div className="w-[100%] tablet:w-[70%] pc:w-[50%] grid grid-cols-3 items-center gap-[20px] text-nowrap">
+                <div className="tablet:w-[100%] pc:w-[50%] grid grid-cols-3 items-center gap-[20px] text-nowrap">
                   <div className="text-black grid grid-cols-1 text-right text-xs tablet:text-sm pc:text-base">
-                    <span className="text-[12px] tablet:text-[13px]">
+                    <span className="text-[10px] tablet:text-[13px]">
                       {data.matchInfo[0].shootDetail.map((shoot: ShootDetail, idx: number) =>
                         shoot.result === 3 ? (
                           <GoalPlayer key={idx} spid={String(shoot.spId)} />
@@ -142,7 +142,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                   </div>
                   <img src="/icons/soccer-ball.png" alt="" className="text-center mx-auto" />
                   <div className="text-black grid grid-cols-1 text-left text-xs tablet:text-sm pc:text-base">
-                    <span className="text-[12px] tablet:text-[13px]">
+                    <span className="text-[10px] tablet:text-[13px]">
                       {data.matchInfo[1].shootDetail.map((shoot: ShootDetail, idx: number) =>
                         shoot.result === 3 ? (
                           <GoalPlayer key={idx} spid={String(shoot.spId)} />
@@ -152,7 +152,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
                   </div>
                 </div>
               </div>
-              <div className="w-[145px] p-[10px] hidden tablet:block tablet:text-sm pc:text-base text-right">
+              <div className="w-[145px] p-[10px] hidden pc:block tablet:text-sm pc:text-base text-right">
                 <span className="block text-black font-bold mb-[5px]">Away</span>
                 <span className="block text-black">{data.matchInfo[1].nickname}</span>
               </div>
