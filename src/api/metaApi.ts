@@ -3,6 +3,12 @@ interface player {
   name: string;
 }
 
+interface SeasonProps {
+  seasonId: number;
+  className: string;
+  seasonImg: string;
+}
+
 const getMetaSpid = async (spid: string) => {
   try {
     const res = await fetch(`https://open.api.nexon.com/static/fconline/meta/spid.json`);
@@ -30,7 +36,7 @@ const getMetaSeasonid = async (seasonid: string) => {
 
     const data = await res.json();
 
-    const season = data.find((s: any) => String(s.seasonId) === seasonid);
+    const season = data.find((s: SeasonProps) => String(s.seasonId) === seasonid);
 
     if (!season) throw new Error("시즌 정보를 찾을 수 없습니다");
 

@@ -102,7 +102,7 @@ const getSpposition = (spposition: number) => {
         name: "GK",
         class: {
           home: "z-10 top-[1%] left-[50%] translate-x-[-50%] translate-y-[-1%]",
-          away: "z-10 top-[96%] left-[50%] translate-x-[-50%] translate-y-[-96%]",
+          away: "z-10 top-[97%] left-[50%] translate-x-[-50%] translate-y-[-97%]",
         },
       };
     case 1:
