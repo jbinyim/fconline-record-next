@@ -1,5 +1,8 @@
+"use client";
+
 import useMeta from "@/hooks/useMeta";
 import fo4Mappings from "@/utils/fo4Mappings";
+import { useState } from "react";
 
 interface PlayerPositionProps {
   spId: number;
@@ -17,24 +20,35 @@ export const PlayerPosition = ({
   team,
 }: PlayerPositionProps) => {
   const posInfo = fo4Mappings.getSpposition(spPosition);
+  const [imgSrc, setImgSrc] = useState(
+    `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${spId}.png`,
+  );
+  const fallbackImg =
+    "https://us.123rf.com/450wm/yuran-78/yuran-781505/yuran-78150500139/40385051-%EC%95%BC%EC%99%B8-%ED%99%9C%EB%8F%99%EC%97%90-%EA%B3%B5%EC%9D%84-%EA%B0%80%EC%A7%84-%EC%B6%95%EA%B5%AC-%EC%84%A0%EC%88%98.jpg?ver=6";
 
   const { data, isPending } = useMeta.useMetaSpid(String(spId));
+  const { data: season, isPending: isPendingSeason } = useMeta.useMetaSeasonid(
+    String(spId).slice(0, 3),
+  );
 
-  if (isPending) return <div>로딩</div>;
+  const isLoading = isPending || isPendingSeason;
+
+  if (isLoading) return <div>로딩</div>;
 
   return (
     // 선수 위치
     <div className={`absolute ${typeof posInfo === "object" && posInfo.class[team]}`}>
-      <div className="relative">
+      <div onClick={() => console.log(spId)} className="relative">
         <img
-          src="https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p834167495.png"
-          alt=""
+          src={imgSrc}
+          alt="선수 이미지"
+          onError={() => setImgSrc(fallbackImg)}
           className="w-[30px] tablet:w-[30px] pc:w-[45px] border-white/30 border-[2px] rounded-full bg-white/20"
         />
         {/* 선수 시즌 */}
         <img
-          src="https://ssl.nexon.com/s2/game/fc/online/obt/externalAssets/new/season/24ucl.png"
-          alt=""
+          src={season.seasonImg}
+          alt="선수 시즌"
           className="absolute left-[-15px] bottom-[-3px] w-[20px]"
         />
         {/* 선수 이름 */}

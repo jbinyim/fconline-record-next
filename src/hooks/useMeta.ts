@@ -9,5 +9,13 @@ const useMetaSpid = (spid: string) => {
   });
 };
 
-const useMeta = { useMetaSpid };
+const useMetaSeasonid = (seasonid: string) => {
+  return useQuery({
+    queryKey: ["seasonid", seasonid],
+    queryFn: () => metaApi.getMetaSeasonid(seasonid),
+    enabled: !!seasonid,
+  });
+};
+
+const useMeta = { useMetaSpid, useMetaSeasonid };
 export default useMeta;

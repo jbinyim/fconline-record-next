@@ -46,8 +46,6 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
     cornerKick: matchInfo.matchDetail.cornerKick,
   });
 
-  console.log(data.matchInfo[0]);
-
   return (
     <div>
       <div className="">
