@@ -1,6 +1,24 @@
 "use client";
 
+import useComment from "@/hooks/useComment";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { CommentGnb } from "./_components/CommentGnb";
+import CommentBox from "./_components/CommentBox";
+import Pagination from "@/components/common/Pagination";
+
 const Comment = () => {
+  const ouid = useSearchParams().get("ouid");
+  const [category, setCategory] = useState<"desc" | "popular">("desc");
+  const [page, setPage] = useState<number>(1);
+
+  const { data, isPending, isError } = useComment.useGetComments(ouid!, category, page);
+
+  console.log(data);
+
+  if (isPending) return <div>loading</div>;
+  if (isError) return <div>error</div>;
+
   return (
     <div>
       <section className="w-[90%] tablet:w-[80%] pc:w-[1200px] mx-auto bg-gray50 rounded-[10px] py-5">
@@ -8,127 +26,14 @@ const Comment = () => {
           <h2 className="font-bold text-3xl">
             <img src="/icons/comment.png" alt="유저 코멘트" className="inline-block" /> 유저 코멘트{" "}
             <span className="inline-block w-[30px] h-[30px] rounded-[10px] bg-red100 text-center text-2xl">
-              5
+              {data.totalCount}
             </span>
           </h2>
         </div>
-        <div className="w-[90%] tablet:w-[85%] mx-auto mb-5">
-          <ul className="flex gap-[10px] items-center">
-            <li className="">
-              <button className="inline-block px-[15px] py-[5px] bg-[#d9d9d9] text-[#3b3b3b] rounded-[10px] font-bold hover:bg-green200 hover:text-white hover:translate-y-[-2px] duration-300">
-                최신순
-              </button>
-            </li>
-            <li className="">
-              <button className="inline-block px-[15px] py-[5px] bg-[#d9d9d9] text-[#3b3b3b] rounded-[10px] font-bold hover:bg-green200 hover:text-white hover:translate-y-[-2px] duration-300">
-                인기순
-              </button>
-            </li>
-            <li className="">
-              <button className="inline-block px-[15px] py-[5px] bg-[#d9d9d9] text-[#3b3b3b] rounded-[10px] font-bold hover:bg-green200 hover:text-white hover:translate-y-[-2px] duration-300">
-                오래된순
-              </button>
-            </li>
-          </ul>
-        </div>
+        <CommentGnb category={category} setCategory={setCategory} />
         <div className="w-[90%] tablet:w-[85%] mx-auto">
-          <ul className="grid grid-cols-1 gap-[15px] mb-5">
-            <li className="px-[20px] py-[15px] flex justify-between bg-white/10 border border-white/30 rounded-[20px]">
-              <div className="w-[80%]">
-                <span className="mb-5 mr-[10px] font-bold text-xl tablet:text-2xl">임정빈</span>
-                <button className="inline-block">
-                  <img src="/icons/thumb.png" alt="좋아요" className="inline-block" />{" "}
-                  <span className="text-sm">2</span>
-                </button>
-                <p className="text-xs tablet:text-sm pc:text-base">
-                  해당유저의 코멘트를 적어주세요. 감사합니다. 사랑합니다. 이 영역은 특정 유저의
-                  평가영역입니다.
-                </p>
-              </div>
-              <div className="flex items-center justify-between flex-col">
-                <time className="opacity-50">1일전</time>
-                <button type="button" className="text-red100 font-bold">
-                  삭제
-                </button>
-              </div>
-            </li>
-            <li className="px-[20px] py-[15px] flex justify-between bg-white/10 border border-white/30 rounded-[20px]">
-              <div className="w-[80%]">
-                <span className="mb-5 mr-[10px] font-bold text-xl tablet:text-2xl">임정빈</span>
-                <button className="inline-block">
-                  <img src="/icons/thumb.png" alt="좋아요" className="inline-block" />{" "}
-                  <span className="text-sm">2</span>
-                </button>
-                <p className="text-xs tablet:text-sm pc:text-base">
-                  해당유저의 코멘트를 적어주세요. 감사합니다. 사랑합니다. 이 영역은 특정 유저의
-                  평가영역입니다.
-                </p>
-              </div>
-              <div className="flex items-center justify-between flex-col">
-                <time className="opacity-50">1일전</time>
-                <button type="button" className="text-red100 font-bold">
-                  삭제
-                </button>
-              </div>
-            </li>
-            <li className="px-[20px] py-[15px] flex justify-between bg-white/10 border border-white/30 rounded-[20px]">
-              <div className="w-[80%]">
-                <span className="mb-5 mr-[10px] font-bold text-xl tablet:text-2xl">임정빈</span>
-                <button className="inline-block">
-                  <img src="/icons/thumb.png" alt="좋아요" className="inline-block" />{" "}
-                  <span className="text-sm">2</span>
-                </button>
-                <p className="text-xs tablet:text-sm pc:text-base">
-                  해당유저의 코멘트를 적어주세요. 감사합니다. 사랑합니다. 이 영역은 특정 유저의
-                  평가영역입니다.
-                </p>
-              </div>
-              <div className="flex items-center justify-between flex-col">
-                <time className="opacity-50">1일전</time>
-                <button type="button" className="text-red100 font-bold">
-                  삭제
-                </button>
-              </div>
-            </li>
-            <li className="px-[20px] py-[15px] flex justify-between bg-white/10 border border-white/30 rounded-[20px]">
-              <div className="w-[80%]">
-                <span className="mb-5 mr-[10px] font-bold text-xl tablet:text-2xl">임정빈</span>
-                <button className="inline-block">
-                  <img src="/icons/thumb.png" alt="좋아요" className="inline-block" />{" "}
-                  <span className="text-sm">2</span>
-                </button>
-                <p className="text-xs tablet:text-sm pc:text-base">
-                  해당유저의 코멘트를 적어주세요. 감사합니다. 사랑합니다. 이 영역은 특정 유저의
-                  평가영역입니다.
-                </p>
-              </div>
-              <div className="flex items-center justify-between flex-col">
-                <time className="opacity-50">1일전</time>
-                <button type="button" className="text-red100 font-bold">
-                  삭제
-                </button>
-              </div>
-            </li>
-            <li className="px-[20px] py-[15px] flex justify-between bg-white/10 border border-white/30 rounded-[20px]">
-              <div className="w-[80%]">
-                <span className="mb-5 mr-[10px] font-bold text-xl tablet:text-2xl">임정빈</span>
-                <button className="inline-block">
-                  <img src="/icons/thumb.png" alt="좋아요" className="inline-block" />{" "}
-                  <span className="text-sm">2</span>
-                </button>
-                <p className="text-xs tablet:text-sm pc:text-base">
-                  해당유저의 코멘트를 적어주세요. 감사합니다. 사랑합니다. 이 영역은 특정 유저의
-                  평가영역입니다.
-                </p>
-              </div>
-              <div className="flex items-center justify-between flex-col">
-                <time className="opacity-50">1일전</time>
-                <button type="button" className="text-red100 font-bold">
-                  삭제
-                </button>
-              </div>
-            </li>
-          </ul>
+          <CommentBox comments={data.comments} />
+          <Pagination currentPage={page} onPageChange={setPage} totalPages={data.totalPages} />
           <p className="w-[70%] tablet:w-[85%] mx-auto text-[#9e9e9e] text-xl mb-10 font-bold">
             무분별한 악플은 관리자의 권한하에 지워질 수 있습니다. 욕설을 삼가하고 건전한 인터넷
             문화를 만들어 주세요.
