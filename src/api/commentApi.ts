@@ -24,6 +24,31 @@ async function getComment(ouid: string, category: string, offset: number) {
   }
 }
 
+async function postComment(ouid: string, nickname: string, text: string, password: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/comments/create/${ouid}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nickname,
+        text,
+        password,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("코멘트를 차다가 넘어졌습니다.");
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (e) {
+    throw e;
+  }
+}
+
 export default {
   getComment,
+  postComment,
 };
