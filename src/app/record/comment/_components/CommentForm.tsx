@@ -9,7 +9,6 @@ export default function CommentForm({ ouid }: { ouid: string }) {
     password: "",
     nickname: "익명",
   });
-  const [error, setError] = useState(false);
 
   const { mutate, isPending, isError } = useComment.usePostComment();
 
@@ -18,7 +17,6 @@ export default function CommentForm({ ouid }: { ouid: string }) {
 
     if (!formData.password.trim() || !formData.text.trim()) {
       alert("비밀번호 와 코멘트를 입력해주세요.");
-      setError(true);
       return;
     }
 

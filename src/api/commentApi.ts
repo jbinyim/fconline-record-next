@@ -48,7 +48,30 @@ async function postComment(ouid: string, nickname: string, text: string, passwor
   }
 }
 
+async function deleteComment(id: string, password: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/comments/delete/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userPassword: password,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (e) {
+    throw e;
+  }
+}
+
 export default {
   getComment,
   postComment,
+  deleteComment,
 };

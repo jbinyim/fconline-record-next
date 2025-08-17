@@ -25,7 +25,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
   const { data, isPending } = useMatch.useMatchDetail(matchData);
 
   if (isPending) {
-    return <div>loaing</div>;
+    return <div>여긴어디 loaing</div>;
   }
 
   const currentUserMatch = data.matchInfo.find((d: MatchInfo) => d.ouid === ouid);

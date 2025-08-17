@@ -1,5 +1,5 @@
 import commentApi from "@/api/commentApi";
-import { PostCommentError, PostCommentResponse } from "@/types/commentType";
+import { DeleteCommentError, PostCommentError, PostCommentResponse } from "@/types/commentType";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 function useGetComments(ouid: string, category: string, offset: number) {
@@ -32,4 +32,18 @@ function usePostComment() {
   });
 }
 
-export default { useGetComments, usePostComment };
+function useDeleteComment() {
+  const queryClient = useQueryClient();
+
+  return useMutation<PostCommentResponse, DeleteCommentError, { id: string; password: string }>({
+    mutationFn: ({ id, password }) => commentApi.deleteComment(id, password),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
+    },
+    onError: (e) => {
+      console.error("댓글 삭제 실패", e);
+    },
+  });
+}
+
+export default { useGetComments, usePostComment, useDeleteComment };

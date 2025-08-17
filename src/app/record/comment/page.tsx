@@ -24,15 +24,21 @@ const Comment = () => {
         <div className="w-[90%] mx-auto mb-10">
           <h2 className="font-bold text-3xl">
             <img src="/icons/comment.png" alt="유저 코멘트" className="inline-block" /> 유저 코멘트{" "}
-            <p className="inline-block p-0.5 rounded-[10px] bg-red100 text-center text-2xl">
+            <p className="inline-block px-1.5 py-0.5 rounded-[10px] bg-green200 text-center text-2xl">
               {data.totalCount}
             </p>
           </h2>
         </div>
         <CommentGnb category={category} setCategory={setCategory} />
         <div className="w-[90%] tablet:w-[85%] mx-auto">
-          <CommentBox comments={data.comments} />
-          <Pagination currentPage={page} onPageChange={setPage} totalPages={data.totalPages} />
+          {data.comments.length === 0 ? (
+            <p className="text-center my-20">아직 받은 코멘트가 없습니다!</p>
+          ) : (
+            <>
+              <CommentBox comments={data.comments} />
+              <Pagination currentPage={page} onPageChange={setPage} totalPages={data.totalPages} />
+            </>
+          )}
           <p className="w-[70%] tablet:w-[85%] mx-auto mt-4 text-[#9e9e9e] text-m lg:text-xl mb-10 font-bold">
             무분별한 악플은 관리자의 권한하에 지워질 수 있습니다. 욕설을 삼가하고 건전한 인터넷
             문화를 만들어 주세요.

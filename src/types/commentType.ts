@@ -20,3 +20,8 @@ export interface PostCommentResponse {
 export interface PostCommentError {
   error: string;
 }
+
+export interface DeleteCommentError {
+  sucess: boolean;
+  message: string;
+}

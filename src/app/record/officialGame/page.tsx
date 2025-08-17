@@ -17,12 +17,13 @@ const OfficialGame = () => {
   } = useAccount.useUserMatch(ouid!);
 
   if (isPending) {
-    return <div>loaing</div>;
+    return <div>공식경이 loaing</div>;
   }
 
   return (
     <div>
       <section className="pc:w-[1200px] tablet:w-[80%] w-[90%] mx-auto grid grid-cols-1 gap-[20px]">
+        {matchData?.pages[0].length === 0 && <div>경기 기록이 없습니다</div>}
         {matchData?.pages.map((page, idx) => (
           <React.Fragment key={idx}>
             {page.map((match: string) => (

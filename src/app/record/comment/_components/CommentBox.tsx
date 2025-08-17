@@ -1,5 +1,6 @@
 import { CommentType } from "@/types/commentType";
 import { getRelativeTime } from "@/utils/timeFormat";
+import CommentDeleteBtn from "./CommentDeleteBtn";
 
 const CommentBox = ({ comments }: { comments: CommentType[] }) => {
   return (
@@ -10,11 +11,9 @@ const CommentBox = ({ comments }: { comments: CommentType[] }) => {
             key={comment.id}
             className="px-4 py-4 flex flex-col gap-3 bg-white/10 border border-white/30 rounded-[20px]"
           >
-            <article className="flex items-center justify-between">
+            <article className="relative flex items-center justify-between">
               <p className="text-xs tablet:text-sm">{comment.nickname}</p>
-              <button type="button" className="text-red100 text-[10px] lg:text-xs">
-                삭제
-              </button>
+              <CommentDeleteBtn commentId={comment.id} />
             </article>
             <p className="text-xs tablet:text-sm pc:text-base whitespace-pre-wrap">
               {comment.text}
