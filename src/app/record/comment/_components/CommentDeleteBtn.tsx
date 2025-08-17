@@ -7,7 +7,7 @@ export default function CommentDeleteBtn({ commentId }: { commentId: string }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
 
-  const { mutate, isPending, isError } = useComment.useDeleteComment();
+  const { mutate, isPending } = useComment.useDeleteComment();
 
   const handleClick = () => {
     if (!password.trim()) {
