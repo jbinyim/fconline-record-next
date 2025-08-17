@@ -1,3 +1,6 @@
+import { formatDistanceToNow } from "date-fns";
+import { ko } from "date-fns/locale";
+
 export const formatNotificationTime = (createdAt: string | Date) => {
   let created = new Date(createdAt);
 
@@ -24,4 +27,11 @@ export const formatNotificationTime = (createdAt: string | Date) => {
   if (diffDate < 30) return `${Math.floor(diffDate / 7)}주 전`;
   if (diffDate < 365) return `${Math.floor(diffDate / 30)}개월 전`;
   return `${Math.floor(diffDate / 365)}년 전`;
+};
+
+export const getRelativeTime = (date: string) => {
+  return formatDistanceToNow(new Date(date), {
+    addSuffix: true,
+    locale: ko,
+  });
 };
