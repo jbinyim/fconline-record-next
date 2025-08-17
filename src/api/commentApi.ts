@@ -1,4 +1,5 @@
-const BASE_URL = process.env.API_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 async function getComment(ouid: string, category: string, offset: number) {
   try {
     const res = await fetch(
