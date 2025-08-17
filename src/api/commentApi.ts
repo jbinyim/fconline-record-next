@@ -1,5 +1,4 @@
-const BASE_URL = process.env.API_URL || "http://localhost:5000";
-
+const BASE_URL = process.env.API_URL;
 async function getComment(ouid: string, category: string, offset: number) {
   try {
     const res = await fetch(
