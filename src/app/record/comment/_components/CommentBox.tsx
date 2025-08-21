@@ -1,6 +1,7 @@
 import { CommentType } from "@/types/commentType";
 import { getRelativeTime } from "@/utils/timeFormat";
 import CommentDeleteBtn from "./CommentDeleteBtn";
+import CommentLike from "./CommentLike";
 
 const CommentBox = ({ comments }: { comments: CommentType[] }) => {
   return (
@@ -22,10 +23,7 @@ const CommentBox = ({ comments }: { comments: CommentType[] }) => {
               <div className="flex items-center gap-2">
                 <time className="opacity-50 text-sm">{getRelativeTime(comment.createdAt)}</time>
               </div>
-              <button className="flex items-center gap-1">
-                <img src="/icons/thumb.png" alt="좋아요" className="h-3.5" />
-                <p className="text-sm align-middle">{comment.like}</p>
-              </button>
+              <CommentLike like={comment.like} commentId={comment.id} />
             </article>
           </li>
         ))}

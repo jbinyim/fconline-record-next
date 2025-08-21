@@ -14,7 +14,7 @@ export default function CommentDeleteBtn({ commentId }: { commentId: string }) {
       alert("비밀번호를 입력해주세요!");
       return;
     }
-    console.log(commentId, password);
+
     mutate(
       {
         id: commentId,

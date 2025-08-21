@@ -1,5 +1,11 @@
 import commentApi from "@/api/commentApi";
-import { DeleteCommentError, PostCommentError, PostCommentResponse } from "@/types/commentType";
+import {
+  DeleteCommentError,
+  PostCommentError,
+  PostCommentResponse,
+  ToggleLikeError,
+  ToggleLikeResponse,
+} from "@/types/commentType";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 function useGetComments(ouid: string, category: string, offset: number) {
@@ -46,4 +52,18 @@ function useDeleteComment() {
   });
 }
 
-export default { useGetComments, usePostComment, useDeleteComment };
+function useToggleLike() {
+  const queryClient = useQueryClient();
+
+  return useMutation<ToggleLikeResponse, ToggleLikeError, { commentId: string }>({
+    mutationFn: ({ commentId }) => commentApi.toggleLike(commentId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["commentLike"] });
+    },
+    onError: (e) => {
+      console.error("좋아요 등록 실패", e);
+    },
+  });
+}
+
+export default { useGetComments, usePostComment, useDeleteComment, useToggleLike };

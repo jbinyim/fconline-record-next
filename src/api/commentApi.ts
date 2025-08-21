@@ -1,4 +1,5 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+// const BASE_URL = "http://localhost:5000";
 
 async function getComment(ouid: string, category: string, offset: number) {
   try {
@@ -70,8 +71,28 @@ async function deleteComment(id: string, password: string) {
   }
 }
 
+async function toggleLike(commentId: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/comments/${commentId}/like`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (e) {
+    throw e;
+  }
+}
+
 export default {
   getComment,
   postComment,
   deleteComment,
+  toggleLike,
 };
