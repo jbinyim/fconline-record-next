@@ -25,3 +25,14 @@ export interface DeleteCommentError {
   sucess: boolean;
   message: string;
 }
+
+export interface ToggleLikeResponse {
+  success: boolean;
+  action: string;
+  likeCount: number;
+}
+export interface ToggleLikeError {
+  success: boolean;
+  error: string;
+  likeCount: number;
+}
