@@ -6,8 +6,12 @@ import ToggleMenu from "../modals/ToggleMenu";
 
 const Nav = () => {
   const [isToggleModal, setIsToggleModal] = useState<boolean>(false);
-  const handleToggleMenu = () => {setIsToggleModal((prev) => !prev)}
-  const handleCloseMenu = () => {setIsToggleModal(false)}
+  const handleToggleMenu = () => {
+    setIsToggleModal((prev) => !prev);
+  };
+  const handleCloseMenu = () => {
+    setIsToggleModal(false);
+  };
   return (
     <div>
       <nav className="w-full pc:flex items-center my-0 mx-auto relative py-[15px] pc:w-[85%] pc:justify-between">
@@ -19,7 +23,7 @@ const Nav = () => {
         />
         <h1 className="text-center pc:text-left">
           <Link href="/" className="font-bold text-3xl">
-            <img src="/logo/logo.png" alt="" className="inline-block"/>
+            <img src="/logo/fcgg.png" alt="" className="inline-block w-10 h-10" />
           </Link>
         </h1>
         <ul className="hidden pc:flex items-center">
@@ -43,10 +47,7 @@ const Nav = () => {
           </li>
         </ul>
         <div className="hidden invisible pc:visible pc:block relative group">
-          <button
-            type="button"
-            className="text-skyBlue50 font-normal text-base"
-          >
+          <button type="button" className="text-skyBlue50 font-normal text-base">
             Screen Mode
           </button>
           <ul className="absolute w-[150px] hidden pc:block overflow-hidden text-center invisible opacity-0 pc:transition-all duration-300 shadow-[0_3px_6px_rgba(0,0,0,0.3)] h-0 group-hover:h-[70px] group-hover:visible group-hover:opacity-100 group-hover:bg-black50">
