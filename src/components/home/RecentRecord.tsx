@@ -3,7 +3,6 @@
 import fo4Mappings from "@/utils/fo4Mappings";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import LoadingSpinner from "../common/LoadingSpinner";
 import { useQueries } from "@tanstack/react-query";
 import accountApi from "@/api/accountApi";
 
@@ -48,9 +47,6 @@ const RecentRecord = () => {
     })),
   });
 
-  const isLoading =
-    userBasicQueries.some((q) => q.isLoading) || userDivisionQueries.some((q) => q.isLoading);
-
   const userInfos: UserInfo[] = recentOuids.map((ouid, idx) => {
     const basicData = userBasicQueries[idx]?.data;
     const divisionData = userDivisionQueries[idx]?.data;
@@ -69,7 +65,9 @@ const RecentRecord = () => {
             <img src="/icons/recent-record.png" alt="" className="inline-block mr-[15px]" />
             최근 조회한 유저
           </h2>
-          {isLoading && <LoadingSpinner />}
+          {userInfos.length === 0 && (
+            <div className="text-center py-10">최근 조회한 유저가 없습니다!</div>
+          )}
           <ul className="mobile:w-[90%] mx-auto grid grid-cols-2 gap-5 pc:gap-10 pc:flex pc:justify-between pc:items-center pc:w-full">
             {userInfos.map((result) => (
               <li
@@ -77,15 +75,14 @@ const RecentRecord = () => {
                 onClick={() => router.push(`/record/officialGame?ouid=${result.ouid}`)}
                 className="hover:text-green-200 cursor-pointer p-[10px] rounded-[10px] bg-white/10 border border-[rgba(255,255,255,0.1)] text-center w-full flex justify-center duration-300 hover:translate-y-[-5px] hover:bg-white/20 hover:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
               >
-                <div className="">
+                <div>
                   <div className="flex items-center justify-between gap-[10px] flex-col">
                     <h3 className="font-normal text-sm tablet:text-base pc:text-xl">
                       {result.nickname}
                     </h3>
                     <img
                       src={fo4Mappings.getDivisionImg(result.division[0]?.division)}
-                      alt=""
-                      className=""
+                      alt="유저 티어 이미지"
                     />
                   </div>
                 </div>
