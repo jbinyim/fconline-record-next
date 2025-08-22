@@ -7,6 +7,7 @@ import { CommentGnb } from "./_components/CommentGnb";
 import CommentBox from "./_components/CommentBox";
 import Pagination from "@/components/common/Pagination";
 import CommentForm from "./_components/CommentForm";
+import LoadingSkeleton from "@/components/common/LoadingSkeleton";
 
 const Comment = () => {
   const ouid = useSearchParams().get("ouid");
@@ -15,8 +16,29 @@ const Comment = () => {
 
   const { data, isPending, isError } = useComment.useGetComments(ouid!, category, page);
 
-  if (isPending) return <div>loading</div>;
-  if (isError) return <div>error</div>;
+  let content;
+
+  if (isPending) {
+    content = Array(4)
+      .fill(0)
+      .map((_, idx) => (
+        <div key={idx} className="grid grid-cols-1 gap-4 mb-5">
+          <LoadingSkeleton type="comment" />
+        </div>
+      ));
+  } else if (isError) {
+    content = <div>Error</div>;
+  } else {
+    content =
+      data.comments.length === 0 ? (
+        <p className="text-center my-20">아직 받은 코멘트가 없습니다!</p>
+      ) : (
+        <>
+          <CommentBox comments={data.comments} />
+          <Pagination currentPage={page} onPageChange={setPage} totalPages={data.totalPages} />
+        </>
+      );
+  }
 
   return (
     <div>
@@ -25,20 +47,13 @@ const Comment = () => {
           <h2 className="font-bold text-3xl">
             <img src="/icons/comment.png" alt="유저 코멘트" className="inline-block" /> 유저 코멘트{" "}
             <p className="inline-block px-1.5 py-0.5 rounded-[10px] bg-green200 text-center text-2xl">
-              {data.totalCount}
+              {data?.totalCount}
             </p>
           </h2>
         </div>
         <CommentGnb category={category} setCategory={setCategory} />
         <div className="w-[90%] tablet:w-[85%] mx-auto">
-          {data.comments.length === 0 ? (
-            <p className="text-center my-20">아직 받은 코멘트가 없습니다!</p>
-          ) : (
-            <>
-              <CommentBox comments={data.comments} />
-              <Pagination currentPage={page} onPageChange={setPage} totalPages={data.totalPages} />
-            </>
-          )}
+          {content}
           <p className="w-[70%] tablet:w-[85%] mx-auto mt-4 text-[#9e9e9e] text-m lg:text-xl mb-10 font-bold">
             무분별한 악플은 관리자의 권한하에 지워질 수 있습니다. 욕설을 삼가하고 건전한 인터넷
             문화를 만들어 주세요.

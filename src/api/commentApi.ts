@@ -1,5 +1,4 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-// const BASE_URL = "http://localhost:5000";
 
 async function getComment(ouid: string, category: string, offset: number) {
   try {

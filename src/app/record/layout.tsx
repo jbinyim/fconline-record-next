@@ -3,7 +3,7 @@ import React, { ReactNode, Suspense } from "react";
 
 const RecordLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Suspense fallback={<div>로딩중...</div>}>
+    <Suspense>
       <div>
         <SearchLayout />
         {children}

@@ -3,4 +3,5 @@ export interface EventType {
   link: string;
   period: string;
   title: string;
+  state: string;
 }

@@ -8,6 +8,7 @@ import { formatNotificationTime } from "@/utils/timeFormat";
 import GoalPlayer from "../common/GoalPlayer";
 import { useSearchParams } from "next/navigation";
 import { MatchDetailData, MatchInfo, ShootDetail } from "@/types/matchDateType";
+import LoadingSkeleton from "@/components/common/LoadingSkeleton";
 
 interface MatchItemProps {
   matchData: string | undefined;
@@ -25,7 +26,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
   const { data, isPending } = useMatch.useMatchDetail(matchData);
 
   if (isPending) {
-    return <div>여긴어디 loaing</div>;
+    return <LoadingSkeleton type="match" />;
   }
 
   const currentUserMatch = data.matchInfo.find((d: MatchInfo) => d.ouid === ouid);
@@ -48,7 +49,7 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
 
   return (
     <div>
-      <div className="">
+      <div>
         {/* 초기 조회 정보  점수판 */}
         <div
           className={`relative flex items-center justify-between bg-gradient-to-r ${

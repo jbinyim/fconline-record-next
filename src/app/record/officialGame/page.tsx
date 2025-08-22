@@ -4,6 +4,7 @@ import React from "react";
 import MatchGame from "./_components/page/MatchGame";
 import { useSearchParams } from "next/navigation";
 import useAccount from "@/hooks/useAccount";
+import LoadingSkeleton from "@/components/common/LoadingSkeleton";
 
 const OfficialGame = () => {
   const ouid = useSearchParams().get("ouid");
@@ -17,7 +18,11 @@ const OfficialGame = () => {
   } = useAccount.useUserMatch(ouid!);
 
   if (isPending) {
-    return <div>공식경이 loaing</div>;
+    return (
+      <div className="pc:w-[1200px] tablet:w-[80%] w-[90%] mx-auto grid grid-cols-1 gap-[20px]">
+        <LoadingSkeleton type="match" />
+      </div>
+    );
   }
 
   return (
