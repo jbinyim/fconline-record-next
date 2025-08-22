@@ -15,10 +15,11 @@ const Nav = () => {
   return (
     <div>
       <nav className="w-full pc:flex items-center my-0 mx-auto relative py-[15px] pc:w-[85%] pc:justify-between">
+        {/* pc:hidden */}
         <img
           src="/icons/toggleMenuBtn.png"
           alt="메뉴토클버튼"
-          className="cursor-pointer absolute left-[20px] top-[25px] pc:hidden"
+          className="cursor-pointer absolute left-[20px] top-[25px] hidden"
           onClick={handleToggleMenu}
         />
         <h1 className="text-center pc:text-left">
@@ -26,7 +27,8 @@ const Nav = () => {
             <img src="/logo/fcgg.png" alt="" className="inline-block w-10 h-10" />
           </Link>
         </h1>
-        <ul className="hidden pc:flex items-center">
+        {/* pc:flex */}
+        <ul className="hidden items-center">
           <li className="px-[15px] text-skyBlue50 font-normal text-lg duration-300 hover:text-white50 hover:translate-y-[-2px]">
             <Link href="/board">
               {/* <img src="" alt="" /> */}
@@ -46,7 +48,8 @@ const Nav = () => {
             </Link>
           </li>
         </ul>
-        <div className="hidden invisible pc:visible pc:block relative group">
+        {/* pc:block */}
+        <div className="hidden invisible pc:visible relative group">
           <button type="button" className="text-skyBlue50 font-normal text-base">
             Screen Mode
           </button>
