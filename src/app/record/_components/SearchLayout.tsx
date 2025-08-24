@@ -35,6 +35,8 @@ const SearchLayout = () => {
     pageLabel = "공식경기";
   } else if (currentRouter.includes("comment")) {
     pageLabel = "한줄평가";
+  } else if (currentRouter.includes("classic")) {
+    pageLabel = "클래식 1대1";
   }
 
   let content;
@@ -91,6 +93,13 @@ const SearchLayout = () => {
               }`}
             >
               <Link href={`/record/officialGame?ouid=${ouid}`}>공식경기</Link>
+            </li>
+            <li
+              className={`cursor-pointer hover:text-green100 duration-300 ${
+                pageLabel === "클래식 1대1" && "text-green100"
+              }`}
+            >
+              <Link href={`/record/classic?ouid=${ouid}`}>클래식 1대1</Link>
             </li>
             <li
               className={`cursor-pointer hover:text-green100 duration-300 ${

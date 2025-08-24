@@ -57,10 +57,15 @@ const getUserMaxdivision = async (ouid: string) => {
   }
 };
 
-const getUserMatch = async (ouid: string, offset: number = 0, limit: number = 10) => {
+const getUserMatch = async (
+  ouid: string,
+  matchtype: number,
+  offset: number = 0,
+  limit: number = 10,
+) => {
   try {
     const res = await fetch(
-      `${BASE_URL}/user/match?ouid=${ouid}&matchtype=50&offset=${offset}&limit=${limit}`,
+      `${BASE_URL}/user/match?ouid=${ouid}&matchtype=${matchtype}&offset=${offset}&limit=${limit}`,
       {
         headers: {
           "x-nxopen-api-key": API_KEY!,

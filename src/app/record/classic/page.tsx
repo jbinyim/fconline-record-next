@@ -1,37 +1,37 @@
 "use client";
 
 import React from "react";
-import MatchGame from "./_components/page/MatchGame";
-import { useSearchParams } from "next/navigation";
-import useAccount from "@/hooks/useAccount";
 import LoadingSkeleton from "@/components/common/LoadingSkeleton";
 import RecordBody from "@/components/common/RecordBody";
+import useAccount from "@/hooks/useAccount";
+import { useSearchParams } from "next/navigation";
+import MatchGame from "../officialGame/_components/page/MatchGame";
 import NoData from "@/components/common/NoData";
 
-const OfficialGame = () => {
+export default function ClassicGame() {
   const ouid = useSearchParams().get("ouid");
 
   const {
-    data: matchData,
+    data: classicData,
     isPending,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useAccount.useUserMatch(ouid!, 50);
+  } = useAccount.useUserMatch(ouid!, 40);
+
+  console.log(classicData);
 
   if (isPending) {
-    return (
-      <RecordBody>
-        <LoadingSkeleton type="match" />
-      </RecordBody>
-    );
+    <RecordBody>
+      <LoadingSkeleton type="match" />
+    </RecordBody>;
   }
 
   return (
     <div>
       <RecordBody>
-        {matchData?.pages[0].length === 0 && <NoData />}
-        {matchData?.pages.map((page, idx) => (
+        {classicData?.pages[0].length === 0 && <NoData />}
+        {classicData?.pages.map((page, idx) => (
           <React.Fragment key={idx}>
             {page.map((match: string) => (
               <MatchGame key={match} matchData={match} />
@@ -52,6 +52,4 @@ const OfficialGame = () => {
       </div>
     </div>
   );
-};
-
-export default OfficialGame;
+}

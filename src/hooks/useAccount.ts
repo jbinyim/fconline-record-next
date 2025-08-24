@@ -23,10 +23,10 @@ const useUsermaxdivision = (ouid: string) => {
   });
 };
 
-const useUserMatch = (ouid: string) => {
+const useUserMatch = (ouid: string, matchtype: number) => {
   return useInfiniteQuery({
-    queryKey: ["userMatch", ouid],
-    queryFn: ({ pageParam = 0 }) => accountApi.getUserMatch(ouid, pageParam, 10),
+    queryKey: ["userMatch", ouid, matchtype],
+    queryFn: ({ pageParam = 0 }) => accountApi.getUserMatch(ouid, matchtype, pageParam, 10),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       if (lastPage.length > 0) {
