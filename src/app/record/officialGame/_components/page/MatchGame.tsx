@@ -99,7 +99,9 @@ const MatchGame = ({ matchData }: MatchItemProps) => {
         {/*상세 정보 */}
         <div
           className={`bg-red50 border-l border-r border-b border-gray-200 transition-all duration-300 ease-in-out overflow-hidden rounded-b-[10px] ${
-            isExpanded ? "max-h-[1800px] tablet:max-h-[1650px] pc:max-h-[1500px] opacity-100" : "max-h-0 opacity-0"
+            isExpanded
+              ? "max-h-[1800px] tablet:max-h-[1650px] pc:max-h-[1500px] opacity-100"
+              : "max-h-0 opacity-0"
           }`}
         >
           <div className="pb-3">

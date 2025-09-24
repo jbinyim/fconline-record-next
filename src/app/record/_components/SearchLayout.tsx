@@ -37,6 +37,8 @@ const SearchLayout = () => {
     pageLabel = "한줄평가";
   } else if (currentRouter.includes("classic")) {
     pageLabel = "클래식 1대1";
+  } else if (currentRouter.includes("aiEvaluation")) {
+    pageLabel = "AI평가";
   }
 
   let content;
@@ -107,6 +109,13 @@ const SearchLayout = () => {
               }`}
             >
               <Link href={`/record/comment?ouid=${ouid}`}>한줄평가</Link>
+            </li>
+            <li
+              className={`cursor-pointer hover:text-green100 duration-300 ${
+                pageLabel === "AI평가" && "text-green100"
+              }`}
+            >
+              <Link href={`/record/aiEvaluation?ouid=${ouid}`}>AI평가</Link>
             </li>
           </ul>
         </div>
